@@ -29,8 +29,8 @@ class Transcoding(st.BaseModel):
 
 
 class PublishId(st.BaseModel):
-    name = st.TextField(is_repr=True, xml_inner=True)
-    type = st.TextField(is_repr=True, xml_attr=True)
+    service = st.TextField(is_repr=True, xml_inner=True)
+    name = st.TextField(is_repr=True, xml_attr=True)
 
 
 class Video(st.BaseModel):

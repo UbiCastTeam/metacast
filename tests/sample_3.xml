@@ -36,7 +36,7 @@
       <width>1280</width>
       <height>720</height>
       <creation_date>2015-09-22_14-58-46</creation_date>
-      <publishid type="amazon">ubicast-solution-corporate_1e4e</publishid>
+      <publishid service="amazon">ubicast-solution-corporate_1e4e</publishid>
       <transcoding service="mediaserver"/>
     </video>
   </videos>

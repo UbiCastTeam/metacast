@@ -76,11 +76,11 @@ var metadata = {
             "publish_ids": [
                 {
                     "name": "https://videossiteubicast.s3.amazonaws.com/2009-05-13_09-52-19backup.wmv",
-                    "type": "url"
+                    "service": "url"
                 },
                 {
                     "name": "/demo/tmsp/2009-05-13/michel_simatic",
-                    "type": "rambla"
+                    "service": "rambla"
                 }
             ]
         },
@@ -90,7 +90,7 @@ var metadata = {
             "publish_ids": [
                 {
                     "name": "58049",
-                    "type": "botr"
+                    "service": "botr"
                 }
             ]
         }

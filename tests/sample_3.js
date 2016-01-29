@@ -1237,7 +1237,7 @@ var metadata = {
             "publish_ids": [
                 {
                     "name": "ubicast-solution-corporate_1e4e",
-                    "type": "amazon"
+                    "service": "amazon"
                 }
             ],
             "source_hash": "autocam_5f4f.mkv_2015922141535_131670189",

@@ -14,12 +14,12 @@
     </video>
     <video edited="1">
       <filename>2009-05-13_09-52-19backup.wmv</filename>
-      <publishid type="url">https://videossiteubicast.s3.amazonaws.com/2009-05-13_09-52-19backup.wmv</publishid>
-      <publishid type="rambla">/demo/tmsp/2009-05-13/michel_simatic</publishid>
+      <publishid service="url">https://videossiteubicast.s3.amazonaws.com/2009-05-13_09-52-19backup.wmv</publishid>
+      <publishid service="rambla">/demo/tmsp/2009-05-13/michel_simatic</publishid>
     </video>
     <video edited="1">
       <filename>2009-05-13_09-52-19backup.mp4</filename>
-      <publishid type="botr">58049</publishid>
+      <publishid service="botr">58049</publishid>
     </video>
   </videos>
   <chapters>

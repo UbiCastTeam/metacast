@@ -43,6 +43,8 @@ def load_xml_bytes(xml_bytes):
     for element in videos:
         for attr in element.attrib:
             element.attrib['is_%s' % attr] = element.attrib[attr]
+        if element.tag == 'publishid' and element.get('type'):
+            element.set('service', element.get('type'))
     # load from xml
     mc = MetaCast.from_xml(root)
     return mc
@@ -143,5 +145,4 @@ def dump(mc, path):
     else:
         raise Exception('Invalid file extension.')
     with open(path, 'wb') as fileobj:
-        mc = dump_fct(fileobj)
-    return mc
+        dump_fct(mc, fileobj)
