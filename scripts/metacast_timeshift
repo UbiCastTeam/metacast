@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+Copyright 2013 - UbiCast
+Written by Sébastien de Melo <sebastien DOT de-melo AT ubicast DOT eu>
+
+This utility script can be used to shift all chapter timecode is a constant
+delay. The script alters the given file and the delay is expressed in seconds and can be positive or negative.
+
+Usage: python metacast_timeshift.py <xmlfile> <milliseconds>
+"""
+from __future__ import print_function
+
+import sys
+from metacast import io import load, dump
+
+
+def main():
+    if len(sys.argv) < 3:
+        raise Exception as "Usage: %s <file_to_process> <shift_in_ms>" % sys.argv[0]
+    xml_file = sys.argv[1]
+    shift = int(sys.argv[2])
+    mc = load(xml_file)
+    for index in mc.indexes:
+        index.time += shift
+    dump(mc, xml_file)
+    print("Done.")
+
+
+if __name__ == "__main__":
+    main()

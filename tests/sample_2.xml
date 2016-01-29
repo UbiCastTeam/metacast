@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='utf-8'?>
+<metacast version="2.6" type="webinar" language="fr">
+  <creation>Wed May 13 09:52:19 2009</creation>
+  <title>Éléments d'architecture client-serveur</title>
+  <speaker email="Michel.Simatic@it-sudparis.eu">Michel SIMATIC</speaker>
+  <company url="http://www.telecom-sudparis.eu/">TELECOM SudParis</company>
+  <description>Les différentes architectures logicielles pour traiter le flux de requêtes arrivant au niveau d'un serveur</description>
+  <license url="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/">Creative Commons By-NC-ND</license>
+  <category>Cours de réseau</category>
+  <keywords>réseau, client, serveur, architecture</keywords>
+  <videos>
+    <video original="1">
+      <filename>2009-05-13_09-52-19backup.dv</filename>
+      <file_hash>2009-05-13_09-52-19backup_6ae2ce.dv</file_hash>
+      <duration>2864157</duration>
+      <width>720</width>
+      <height>576</height>
+      <ratio>4_3</ratio>
+      <creation_date>2013-01-21_16-29-39</creation_date>
+    </video>
+    <video edited="1">
+      <filename>2009-05-13_09-52-19backup.wmv</filename>
+      <file_hash>2009-05-13_09-52-19backup.wm_2013121162939_73649387</file_hash>
+      <source_hash>2009-05-13_09-52-19backup_6ae2ce.dv</source_hash>
+      <duration>2864157</duration>
+      <width>720</width>
+      <height>576</height>
+      <ratio>4_3</ratio>
+      <creation_date>2013-02-05_16-35-26</creation_date>
+      <publishid type="url">https://videossiteubicast.s3.amazonaws.com/2009-05-13_09-52-19backup.wmv</publishid>
+      <publishid type="rambla">/demo/tmsp/2009-05-13/michel_simatic</publishid>
+    </video>
+    <video edited="1">
+      <filename>2009-05-13_09-52-19backup.mp4</filename>
+      <publishid type="botr">58049</publishid>
+    </video>
+  </videos>
+  <resources>
+    <resource service="amazon" quality="high" downloadable="1" displayable="1">
+      <filename>comparaison-mpeg4_f14afd/comparaison-mpeg4_low.mp4</filename>
+      <server>rtmp://streaming.ubicast.net/vod</server>
+    </resource>
+    <resource quality="high" displayable="1">
+      <filename>http://videos.bench.ubicast.net/comparaison-mpeg4_f14afd/comparaison-mpeg4_high.webm</filename>
+    </resource>
+    <resource>
+      <filename>http://videos.bench.ubicast.net/comparaison-mpeg4_f14afd/comparaison-mpeg4_low.mp4</filename>
+    </resource>
+  </resources>
+  <indexes>
+    <index>
+      <!--00:00:00.000-->
+      <time>0</time>
+      <title>Début du cours</title>
+      <description>Présentation du cours, plan du diaporama</description>
+      <image>capture1.jpg</image>
+    </index>
+    <index>
+      <!--00:01:09.000-->
+      <time>69000</time>
+      <title>1. Introduction</title>
+      <description>Description, objectifs, les communications</description>
+      <keywords>introduction, test, autre</keywords>
+      <image>capture3.jpg</image>
+    </index>
+    <index>
+      <!--00:01:43.000-->
+      <time>103000</time>
+      <title>1.1 Définition d'une architecture client/serveur</title>
+      <image>capture4.jpg</image>
+    </index>
+    <index>
+      <!--00:11:51.000-->
+      <time>711000</time>
+      <title>2. Serveur mono-tâche</title>
+      <description>Principe, avantages et inconvénients d'un serveur mono-tâche</description>
+      <image>capture8.jpg</image>
+    </index>
+    <index>
+      <!--00:16:27.000-->
+      <time>987000</time>
+      <title>3. Serveur avec autant de tâches que de clients</title>
+      <description>Principe, avantages et inconvénients d'un serveur ayant autant de tâches que de clients</description>
+      <image>capture12.jpg</image>
+    </index>
+    <index>
+      <!--00:29:23.000-->
+      <time>1763000</time>
+      <title>4. Serveur avec N tâches gérant tous les clients</title>
+      <description>Principe, avantages et inconvénients d'un serveur ayant un nombre limité de tâches</description>
+      <image>capture36.jpg</image>
+    </index>
+    <index>
+      <!--00:45:42.000-->
+      <time>2742000</time>
+      <tags>
+        <tag type="stop"/>
+      </tags>
+    </index>
+  </indexes>
+  <attachments>
+    <attachment>
+      <filename>test.pdf</filename>
+      <title>Fichier de test</title>
+      <description>Description du fichier</description>
+      <keywords>normal, parution des évènements</keywords>
+    </attachment>
+    <attachment>
+      <filename>autre.pdf</filename>
+      <title>Autre fichier de test</title>
+    </attachment>
+  </attachments>
+  <photos>
+    <photo>
+      <filename>test.jpg</filename>
+      <title>Photo de test</title>
+      <description>Description de la photo</description>
+      <keywords>photo, test</keywords>
+    </photo>
+    <photo>
+      <filename>autre.png</filename>
+      <title>Autre photo de test</title>
+    </photo>
+  </photos>
+</metacast>
