@@ -17,11 +17,17 @@ from metacast.models import MetaCast
 def load_xml_bytes(xml_bytes):
     root = etree.fromstring(xml_bytes)
     # apply compatibility changes to data
+    # change layout (version < 3.0)
+    if root.get('type'):
+        root.set('layout', root.get('type'))
     # change date format (version < 3.0)
     creation = root.find('creation')
     if creation is not None and creation.text:
-        date = datetime.datetime.strptime(creation.text, '%a %b %d %H:%M:%S %Y')
-        creation.text = date.strftime('%Y-%m-%d %H:%M:%S')
+        try:
+            date = datetime.datetime.strptime(creation.text, '%a %b %d %H:%M:%S %Y')
+            creation.text = date.strftime('%Y-%m-%d %H:%M:%S')
+        except ValueError:
+            pass
     # replace speaker identifier
     speaker = root.find('speaker')
     if speaker is not None and speaker.get('id'):
@@ -38,7 +44,7 @@ def load_xml_bytes(xml_bytes):
                 if timecode is not None:
                     timecode.tag = 'time'
                     timecode.text = str(utils.get_time_from_timecode(timecode.text))
-    # add videos attributes alternative names (version < 3.0)
+    # set videos attributes names (version < 3.0)
     videos = root.find('videos')
     for element in videos:
         for attr in element.attrib:

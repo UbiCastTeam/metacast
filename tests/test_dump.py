@@ -4,6 +4,7 @@
 MetaCast - Test of export function.
 '''
 from __future__ import print_function
+import datetime
 try:
     from StringIO import BytesIO
 except ImportError:
@@ -16,7 +17,7 @@ from metacast.io import dump_xml, dump_json
 
 if __name__ == '__main__':
     print('Creating MetaCast object')
-    mc = models.MetaCast(title='test', layout='video')
+    mc = models.MetaCast(title='test', layout='video', creation=datetime.datetime.now())
     mc.speaker = models.Speaker()
     mc.license = models.License(name='test', url='http://test')
     mc.indexes = [
@@ -29,6 +30,7 @@ if __name__ == '__main__':
         ]),
     ]
     print(mc)
+    print(mc.creation)
 
     print('Test xml export')
     print('----------------------------------------------')

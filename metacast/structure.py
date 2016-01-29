@@ -145,7 +145,7 @@ class ListField(BaseField):
         return strcls(', ').join(self.value) if self.value else None
 
     def from_xml(self, data):
-        self.value = [item.strip() for item in data.split(',')]
+        self.value = [item.strip() for item in data.split(',')] if data is not None else None
 
 
 class SubModelField(BaseField):
@@ -305,7 +305,7 @@ class BaseModel(object):
         ))
 
     def _get_field(self, name):
-        return self.fields_dict[name]
+        return self.fields_dict[name].value
 
     def _set_field(self, name, value):
         self.fields_dict[name].value = value
