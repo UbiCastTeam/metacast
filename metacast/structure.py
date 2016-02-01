@@ -21,6 +21,7 @@ class BaseField(object):
         object.__init__(self)
         self.name = 'filled in model init'
         self.value = initial
+        self.initial = initial
         self.is_repr = is_repr  # used to indicate whether this field should be used to represent the model containing it or not
         self.xml_attr = xml_attr  # only used for xml
         self.xml_inner = xml_inner
@@ -28,67 +29,119 @@ class BaseField(object):
     def __repr__(self):
         return '%s=%s' % (self.name, self.value)
 
+    def set_initial(self):
+        if callable(self.initial):
+            self.value = self.initial()
+        else:
+            self.value = self.initial
+
     def get_empty_copy(self):
         new = self.__class__(
-            initial=self.get_value_copy(),
+            initial=self.initial,
             is_repr=self.is_repr,
             xml_attr=self.xml_attr,
             xml_inner=self.xml_inner,
         )
         new.name = self.name
+        new.set_initial()
         return new
 
     def get_value_copy(self):
         return self.value
 
+    def to_any(self):
+        if self.value != self.initial:
+            return self.value
+
+    def from_any(self, data):
+        if data is None:
+            self.set_initial()
+        else:
+            self.value = data
+
     def to_json(self):
-        return self.value
+        return self.to_any()
 
     def from_json(self, data):
-        self.value = data
+        return self.from_any(data)
 
     def to_xml(self):
-        return self.value
+        return self.to_any()
 
     def from_xml(self, data):
-        self.value = data
+        return self.from_any(data)
 
 
 class TextField(BaseField):
-    pass
+
+    def __init__(self, *args, **kwargs):
+        if kwargs.get('initial') is None:
+            kwargs['initial'] = ''
+        super(TextField, self).__init__(*args, **kwargs)
 
 
 class BooleanField(BaseField):
 
+    def __init__(self, *args, **kwargs):
+        if kwargs.get('initial') is None:
+            kwargs['initial'] = False
+        super(BooleanField, self).__init__(*args, **kwargs)
+
     def to_json(self):
-        return True if self.value else None
+        if self.value != self.initial:
+            return True if self.value else False
 
     def from_json(self, data):
-        self.value = True if data else None
+        if data is None:
+            self.set_initial()
+        else:
+            self.value = True if data else False
 
     def to_xml(self):
-        return '1' if self.value else None
+        if self.value != self.initial:
+            return '1' if self.value else '0'
 
     def from_xml(self, data):
-        self.value = data == '1'
+        if data is None:
+            self.set_initial()
+        else:
+            self.value = data == '1'
 
 
 class IntegerField(BaseField):
 
+    def __init__(self, *args, **kwargs):
+        if kwargs.get('initial') is None:
+            kwargs['initial'] = 0
+        super(IntegerField, self).__init__(*args, **kwargs)
+
     def to_xml(self):
-        return str(self.value) if self.value is not None else None
+        if self.value != self.initial:
+            return str(self.value)
 
     def from_xml(self, data):
-        self.value = int(data) if data else None
+        if data is None:
+            self.set_initial()
+        else:
+            self.value = int(data)
 
 
 class FloatField(BaseField):
 
+    def __init__(self, *args, **kwargs):
+        if kwargs.get('initial') is None:
+            kwargs['initial'] = 0.0
+        super(FloatField, self).__init__(*args, **kwargs)
+
     def to_xml(self):
-        return str(self.value) if self.value is not None else None
+        if self.value != self.initial:
+            return str(self.value)
 
     def from_xml(self, data):
-        self.value = float(data) if data else None
+        if data is None:
+            self.set_initial()
+        else:
+            self.value = float(data)
 
 
 class DatetimeField(BaseField):
@@ -99,22 +152,14 @@ class DatetimeField(BaseField):
         d = self.value
         return datetime.datetime(d.year, d.month, d.day, d.hour, d.minute, d.second)
 
-    def to_json(self):
-        if self.value:
-            return self.value.strftime('%Y-%m-%d %H:%M:%S')
+    def to_any(self):
+        if self.value != self.initial:
+            return self.value.strftime('%Y-%m-%d %H:%M:%S') if self.value else None
 
-    def from_json(self, data):
-        if data:
-            self.value = datetime.datetime.strptime(data, '%Y-%m-%d %H:%M:%S')
-        else:
-            self.value = None
-
-    def to_xml(self):
-        if self.value:
-            return self.value.strftime('%Y-%m-%d %H:%M:%S')
-
-    def from_xml(self, data):
-        if data:
+    def from_any(self, data):
+        if data is None:
+            self.set_initial()
+        elif data:
             try:
                 self.value = datetime.datetime.strptime(data, '%Y-%m-%d %H:%M:%S')
             except ValueError:
@@ -126,46 +171,60 @@ class DatetimeField(BaseField):
 
 class JSONField(BaseField):
 
-    def to_json(self):
-        return json.dumps(self.value) if self.value else None
+    def __init__(self, *args, **kwargs):
+        if kwargs.get('initial') is None:
+            kwargs['initial'] = dict()
+        super(JSONField, self).__init__(*args, **kwargs)
 
-    def from_json(self, data):
-        self.value = json.loads(data) if data else None
+    def to_any(self):
+        if self.value != self.initial:
+            return json.dumps(self.value) if self.value else None
 
-    def to_xml(self):
-        return json.dumps(self.value) if self.value else None
-
-    def from_xml(self, data):
-        self.value = json.loads(data) if data else None
+    def from_any(self, data):
+        if data is None:
+            self.set_initial()
+        else:
+            self.value = json.loads(data)
 
 
 class ListField(BaseField):
 
+    def __init__(self, *args, **kwargs):
+        if kwargs.get('initial') is None:
+            kwargs['initial'] = list
+        super(ListField, self).__init__(*args, **kwargs)
+
     def to_xml(self):
-        return strcls(', ').join(self.value) if self.value else None
+        if self.value != self.initial:
+            return strcls(', ').join(self.value) if self.value else None
 
     def from_xml(self, data):
-        self.value = [item.strip() for item in data.split(',')] if data is not None else None
+        if data is None:
+            self.set_initial()
+        else:
+            self.value = [item.strip() for item in data.split(',')]
 
 
 class SubModelField(BaseField):
 
     def __init__(self, model, mono=False, *args, **kwargs):
+        # Changing initial value for this field is not allowed
+        kwargs['initial'] = list
         super(SubModelField, self).__init__(*args, **kwargs)
         self.model = model
         self.mono = mono
-        self.value = list()
 
     def get_empty_copy(self):
         new = self.__class__(
             self.model,
             mono=self.mono,
-            initial=list(),
+            initial=self.initial,
             is_repr=self.is_repr,
             xml_attr=self.xml_attr,
             xml_inner=self.xml_inner,
         )
         new.name = self.name
+        new.set_initial()
         return new
 
     def get_value_copy(self):
