@@ -194,6 +194,10 @@ class ListField(BaseField):
             kwargs['initial'] = list
         super(ListField, self).__init__(*args, **kwargs)
 
+    def to_json(self):
+        if self.value != self.initial and self.value:
+            return self.value
+
     def to_xml(self):
         if self.value != self.initial:
             return strcls(', ').join(self.value) if self.value else None
