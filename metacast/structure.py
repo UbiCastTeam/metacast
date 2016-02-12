@@ -256,7 +256,7 @@ class SubModelField(BaseField):
 
     def from_json(self, data, append=False):
         if data is None or len(data) < 1:
-            self.value = list()
+            self.set_initial()
         elif self.mono:
             self.value = self.model.from_json(data)
         else:
@@ -287,7 +287,7 @@ class SubModelField(BaseField):
 
     def from_xml(self, data, append=False):
         if data is None or len(data) < 1:
-            self.value = list()
+            self.set_initial()
         elif self.mono:
             self.value = self.model.from_xml(data[0])
         else:
@@ -303,6 +303,7 @@ class OneModelField(SubModelField):
     def __init__(self, *args, **kwargs):
         kwargs['mono'] = True
         super(OneModelField, self).__init__(*args, **kwargs)
+        self.initial = None
 
 
 class ManyModelField(SubModelField):
