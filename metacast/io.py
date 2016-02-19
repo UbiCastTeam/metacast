@@ -46,11 +46,13 @@ def load_xml_bytes(xml_bytes):
                     timecode.text = str(utils.get_time_from_timecode(timecode.text))
     # set videos attributes names (version < 3.0)
     videos = root.find('videos')
-    for element in videos:
-        for attr in element.attrib:
-            element.attrib['is_%s' % attr] = element.attrib[attr]
-        if element.tag == 'publishid' and element.get('type'):
-            element.set('service', element.get('type'))
+    if videos is not None:
+        for element in videos:
+            for attr in element.attrib:
+                element.set('is_%s' % attr, element.get(attr))
+            for sub in element:
+                if sub.tag == 'publishid' and sub.get('type'):
+                    sub.set('service', sub.get('type'))
     # load from xml
     mc = MetaCast.from_xml(root)
     return mc
