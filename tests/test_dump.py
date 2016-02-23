@@ -26,7 +26,7 @@ if __name__ == '__main__':
     ]
     mc.videos = [
         models.Video(filename='media', publish_ids=[
-            models.PublishId(name='test', type='amazon')
+            models.PublishId(service='amazon', name='test')
         ]),
     ]
     print(mc)
