@@ -320,6 +320,8 @@ class BaseModel(object):
 
     def __init__(self, *args, **kwargs):
         object.__init__(self)
+        if args:
+            raise ValueError('Non-keyword arguments are not accepted')
         if hasattr(self, 'fields'):
             raise AttributeError('You have used a reserved name of model: "fields".')
         self.__class__._init()
@@ -328,11 +330,13 @@ class BaseModel(object):
         for field in self.__class__._fields:
             copy = field.get_empty_copy()
             if field.name in kwargs:
-                copy.value = kwargs[field.name]
+                copy.value = kwargs.pop(field.name)
             self.fields.append(copy)
             self.fields_dict[field.name] = copy
         if not self.fields:
             raise AttributeError('No fields found for model %s.' % self.__class__.__name__)
+        if kwargs:
+            raise ValueError('Invalid keyword arguments: %s' % ', '.join(kwargs.keys()))
 
     def __repr__(self):
         props = list()

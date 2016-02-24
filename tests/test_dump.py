@@ -22,7 +22,9 @@ if __name__ == '__main__':
     mc.license = models.License(name='test', url='http://test')
     mc.indexes = [
         models.Index(time=0),
-        models.Index(time=452),
+        models.Index(time=452, tags=[
+            models.Tag(type='pre-start'),
+        ]),
     ]
     mc.videos = [
         models.Video(filename='media', publish_ids=[
