@@ -29,7 +29,16 @@ if __name__ == '__main__':
     mc.videos = [
         models.Video(filename='media', publish_ids=[
             models.PublishId(service='amazon', name='test')
-        ]),
+        ], transcoding=models.Transcoding(
+            service='zencoder', outputs=[
+                models.Output(name='video_high.mp4', type='hd_video', width=None, height=720, profile=models.Profile(
+                    name='mp4_hd_ready',
+                    label='MP4 HD ready',
+                    cost=2.0,
+                    recipe=dict(audio_quality=3, keyframe_interval=25, hint=True, height=720, audio_normalize=True, audio_codec='aac', video_codec='h264', quality=4)
+                ))
+            ])
+        )
     ]
     print(mc)
     print(mc.creation)

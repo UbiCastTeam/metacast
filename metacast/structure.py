@@ -116,7 +116,7 @@ class IntegerField(BaseField):
         super(IntegerField, self).__init__(*args, **kwargs)
 
     def to_xml(self):
-        if self.value != self.initial:
+        if self.value is not None and self.value != self.initial:
             return str(self.value)
 
     def from_xml(self, data):
@@ -134,7 +134,7 @@ class FloatField(BaseField):
         super(FloatField, self).__init__(*args, **kwargs)
 
     def to_xml(self):
-        if self.value != self.initial:
+        if self.value is not None and self.value != self.initial:
             return str(self.value)
 
     def from_xml(self, data):

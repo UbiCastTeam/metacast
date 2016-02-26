@@ -11,7 +11,7 @@ from metacast import utils
 class Profile(st.BaseModel):
     name = st.TextField(is_repr=True)
     label = st.TextField()
-    cost = st.IntegerField()
+    cost = st.FloatField()
     recipe = st.JSONField()
 
 
@@ -53,7 +53,7 @@ class Video(st.BaseModel):
     creation_date = st.DatetimeField()
     info = st.TextField()
     publish_ids = st.ManyModelField(model=PublishId, xml_inner=True)
-    transcodings = st.ManyModelField(model=Transcoding, xml_inner=True)
+    transcoding = st.OneModelField(model=Transcoding, xml_inner=True)
 
 
 class Resource(st.BaseModel):
