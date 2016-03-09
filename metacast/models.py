@@ -57,10 +57,10 @@ class Video(st.BaseModel):
 
 
 class Resource(st.BaseModel):
-    service = st.TextField(is_repr=True)
+    service = st.TextField(is_repr=True, xml_attr=True)
     filename = st.TextField(is_repr=True)
     server = st.TextField()
-    quality = st.TextField()
+    quality = st.TextField(xml_attr=True)
     downloadable = st.BooleanField(xml_attr=True)
     displayable = st.BooleanField(xml_attr=True)
 
