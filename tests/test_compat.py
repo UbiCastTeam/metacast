@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-MetaCast - Full test, import and export in all formats.
+MetaCast - Compatibility test, import and export in older formats.
 '''
 from __future__ import print_function
 import os

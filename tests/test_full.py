@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-MetaCast - Test of export function.
+MetaCast - Test of import/export functions.
 '''
 from __future__ import print_function
 import datetime
 import unittest
+import tempfile
 try:
     from StringIO import BytesIO
 except ImportError:
@@ -13,7 +14,7 @@ except ImportError:
     from io import BytesIO
 
 from metacast import models
-from metacast.io import dump_xml, dump_json
+from metacast.io import load_xml, dump_xml, load_json, dump_json, load_js, dump_js
 
 XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
 <metacast layout="video" version="3.0">
@@ -193,8 +194,138 @@ JSON_RESULT_PYTHON3 = '''{
     ]
 }'''
 
+JS_RESULT_PYTHON2 = '''/* MetaCast - v3.0 */
+/* https://github.com/UbiCastTeam/metacast */
+var metadata = {
+    "creation": "%s", 
+    "indexes": [
+        {
+            "tags": [
+                {
+                    "type": "pre-start"
+                }
+            ], 
+            "time": 452
+        }, 
+        {
+            "tags": [
+                {
+                    "content": "{ \\"label\\": \\"Slide 1\\", \\"type\\": { \\"slug\\": \\"slide\\" }}", 
+                    "type": "slide"
+                }
+            ], 
+            "time": 9000
+        }
+    ], 
+    "layout": "video", 
+    "license": {
+        "name": "test", 
+        "url": "http://test"
+    }, 
+    "tag_types": [
+        {
+            "internal_type": "slide", 
+            "slug": "slide"
+        }
+    ], 
+    "title": "test", 
+    "version": "3.0", 
+    "videos": [
+        {
+            "filename": "media", 
+            "publish_ids": [
+                {
+                    "name": "test", 
+                    "service": "amazon"
+                }
+            ], 
+            "transcoding": {
+                "outputs": [
+                    {
+                        "height": 720, 
+                        "name": "video_high.mp4", 
+                        "profile": {
+                            "cost": 2.0, 
+                            "label": "MP4 HD ready", 
+                            "name": "mp4_hd_ready", 
+                            "recipe": "{\\"audio_codec\\": \\"aac\\", \\"audio_normalize\\": true, \\"audio_quality\\": 3, \\"height\\": 720, \\"hint\\": true, \\"keyframe_interval\\": 25, \\"quality\\": 4, \\"video_codec\\": \\"h264\\"}"
+                        }, 
+                        "type": "hd_video"
+                    }
+                ], 
+                "service": "zencoder"
+            }
+        }
+    ]
+};'''
 
-class TestDump(unittest.TestCase):
+JS_RESULT_PYTHON3 = '''/* MetaCast - v3.0 */
+/* https://github.com/UbiCastTeam/metacast */
+var metadata = {
+    "creation": "%s",
+    "indexes": [
+        {
+            "tags": [
+                {
+                    "type": "pre-start"
+                }
+            ],
+            "time": 452
+        },
+        {
+            "tags": [
+                {
+                    "content": "{ \\"label\\": \\"Slide 1\\", \\"type\\": { \\"slug\\": \\"slide\\" }}",
+                    "type": "slide"
+                }
+            ],
+            "time": 9000
+        }
+    ],
+    "layout": "video",
+    "license": {
+        "name": "test",
+        "url": "http://test"
+    },
+    "tag_types": [
+        {
+            "internal_type": "slide",
+            "slug": "slide"
+        }
+    ],
+    "title": "test",
+    "version": "3.0",
+    "videos": [
+        {
+            "filename": "media",
+            "publish_ids": [
+                {
+                    "name": "test",
+                    "service": "amazon"
+                }
+            ],
+            "transcoding": {
+                "outputs": [
+                    {
+                        "height": 720,
+                        "name": "video_high.mp4",
+                        "profile": {
+                            "cost": 2.0,
+                            "label": "MP4 HD ready",
+                            "name": "mp4_hd_ready",
+                            "recipe": "{\\"audio_codec\\": \\"aac\\", \\"audio_normalize\\": true, \\"audio_quality\\": 3, \\"height\\": 720, \\"hint\\": true, \\"keyframe_interval\\": 25, \\"quality\\": 4, \\"video_codec\\": \\"h264\\"}"
+                        },
+                        "type": "hd_video"
+                    }
+                ],
+                "service": "zencoder"
+            }
+        }
+    ]
+};'''
+
+
+class TestFull(unittest.TestCase):
     def setUp(self):
         self.mc = models.MetaCast(title='test', layout='video', creation=datetime.datetime.now())
         self.mc.speaker = models.Speaker()
@@ -224,13 +355,13 @@ class TestDump(unittest.TestCase):
             )
         ]
 
-    def test_xml(self):
+    def test_dump_xml(self):
         buf = BytesIO()
         dump_xml(self.mc, buf)
         result = buf.getvalue().decode('utf-8')
         self.assertEqual(XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), result)
 
-    def test_json(self):
+    def test_dump_json(self):
         buf = BytesIO()
         dump_json(self.mc, buf)
         result = buf.getvalue().decode('utf-8')
@@ -240,6 +371,48 @@ class TestDump(unittest.TestCase):
             JSON_RESULT = JSON_RESULT_PYTHON3
         self.assertEqual(JSON_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), result)
 
+    def test_dump_js(self):
+        buf = BytesIO()
+        dump_js(self.mc, buf)
+        result = buf.getvalue().decode('utf-8')
+        try:
+            JS_RESULT = unicode(JS_RESULT_PYTHON2)  # python 2 add space at the end offlines
+        except NameError:
+            JS_RESULT = JS_RESULT_PYTHON3
+        self.assertEqual(JS_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), result)
+
+    def test_load_xml(self):
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8') as fp:
+            fp.write(XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
+            fp.flush()
+            path = fp.name
+            with open(path, 'rb') as fpr:
+                mc = load_xml(fpr)
+                fpr.close()
+            fp.close()
+        self.assertIsInstance(mc, models.MetaCast)
+
+    def test_load_json(self):
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8') as fp:
+            fp.write(JSON_RESULT_PYTHON3 % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
+            fp.flush()
+            path = fp.name
+            with open(path, 'rb') as fpr:
+                mc = load_json(fpr)
+                fpr.close()
+            fp.close()
+        self.assertIsInstance(mc, models.MetaCast)
+
+    def test_load_js(self):
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8') as fp:
+            fp.write(JS_RESULT_PYTHON3 % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
+            fp.flush()
+            path = fp.name
+            with open(path, 'rb') as fpr:
+                mc = load_js(fpr)
+                fpr.close()
+            fp.close()
+        self.assertIsInstance(mc, models.MetaCast)
 
 if __name__ == '__main__':
     unittest.main()
