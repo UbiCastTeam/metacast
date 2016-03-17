@@ -89,7 +89,7 @@ def dump_json_str(mc, pretty=True):
     if pretty:
         data = json.dumps(data, sort_keys=True, indent=4)
     else:
-        data = json.dumps(data)
+        data = json.dumps(data, sort_keys=True)
     return data
 
 

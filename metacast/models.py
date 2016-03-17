@@ -66,12 +66,80 @@ class Resource(st.BaseModel):
 
 
 class Tag(st.BaseModel):
+    '''
+        Represent an annotation for mediaserver
+        or an action point for easycast
+        - type:
+            the slug of a TagType for mediaserver
+            or an internal tag type for easycast
+        - content:
+            a json for mediaserver that represent an annotation
+            or an internal value for easycast
+    '''
     type = st.TextField(is_repr=True, xml_attr=True)
     content = st.TextField()
 
 
+class TagType(st.BaseModel):
+    '''
+        Represent a tag type(slide, chapter, ect...)
+        - internal_type:
+            for particular tags (slide, chapter, activity)
+        - slug:
+            used to detect if type already exists or needs to be created
+        - label:
+            type label like Slide
+        - color:
+            type color representation
+        - visibility:
+            if type is public or private
+        - allow_title:
+            allow a title for the annotation
+        - allow_content:
+            allow a description for the annotation
+        - allow_attachment:
+            allow an attachment for the annotation
+        - allow_keywords:
+            allow keywords for the annotation
+        - enable_social:
+            enable social features like response, vote, ect...
+        - enable_mailing:
+            enable mailing if users are following the annotation timeline
+        - enable_notification:
+            enable in player notification if the sidebar is closed
+    '''
+    internal_type = st.TextField(is_repr=True)
+    slug = st.TextField(is_repr=True)
+    label = st.TextField()
+    color = st.TextField()
+    visibility = st.BooleanField()
+    allow_title = st.BooleanField()
+    allow_content = st.BooleanField()
+    allow_attachment = st.BooleanField()
+    allow_keywords = st.BooleanField()
+    enable_social = st.BooleanField()
+    enable_mailing = st.BooleanField()
+    enable_notification = st.BooleanField()
+
+
 class Index(st.BaseModel):
-    time = st.IntegerField(is_repr=True)  # time is an integer in milliseconds (ms)
+    '''
+        Represent an index in the video timeline
+        - time:
+            time is an integer in milliseconds (ms)
+        - title:
+            used by easycast and offline player to precise a chapters
+        - description:
+            used by easycast and offline player to precise the content of slides and chapters
+        - image:
+            used by easycast and offline player to give the slides path
+        - keywords:
+            used by easycast and offline player to precise keywords for chapters and slides
+        - tags:
+            used by easycast for adding internal actions
+            and used by mediaserver to declare annotations
+    '''
+    time = st.IntegerField(is_repr=True)
     title = st.TextField(is_repr=True)
     description = st.TextField()
     image = st.TextField(is_repr=True)
@@ -167,6 +235,7 @@ class MetaCast(st.BaseModel):
     category = st.TextField()
     creation = st.DatetimeField()
     keywords = st.ListField()
+    tag_types = st.ManyModelField(model=TagType)
     indexes = st.ManyModelField(model=Index)
     videos = st.ManyModelField(model=Video)
     resources = st.ManyModelField(model=Resource)

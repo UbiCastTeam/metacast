@@ -178,7 +178,7 @@ class JSONField(BaseField):
 
     def to_any(self):
         if self.value != self.initial:
-            return json.dumps(self.value) if self.value else None
+            return json.dumps(self.value, sort_keys=True) if self.value else None
 
     def from_any(self, data):
         if data is None:
