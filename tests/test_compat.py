@@ -15,7 +15,10 @@ except ImportError:
 from metacast.io import load_xml, dump_xml, load_json, dump_json, load_js, dump_js
 
 
-class TestDump(unittest.TestCase):
+class TestCompatibility(unittest.TestCase):
+    def runTest(self):
+        self.test_full()
+
     def test_full(self):
         base_path = os.path.dirname(__file__)
         tests = [

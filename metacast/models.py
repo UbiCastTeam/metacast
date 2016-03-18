@@ -98,7 +98,6 @@ class TagTypeCategory(st.BaseModel):
     '''
     slug = st.TextField(is_repr=True)
     label = st.TextField()
-    enable_social = st.BooleanField()
     enable_mailing = st.BooleanField()
     enable_notification = st.BooleanField()
 

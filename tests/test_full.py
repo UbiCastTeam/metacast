@@ -379,6 +379,14 @@ class TestFull(unittest.TestCase):
             )
         ]
 
+    def runTest(self):
+        self.test_dump_xml()
+        self.test_dump_json()
+        self.test_dump_js()
+        self.test_load_xml()
+        self.test_load_json()
+        self.test_load_js()
+
     def test_dump_xml(self):
         buf = BytesIO()
         dump_xml(self.mc, buf)
