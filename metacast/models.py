@@ -80,6 +80,29 @@ class Tag(st.BaseModel):
     content = st.TextField()
 
 
+class TagTypeCategory(st.BaseModel):
+    '''
+        Represent a type category
+        - slug:
+            used to detect if type already exists or needs to be created
+        - label:
+            type label like More information
+        - visibility:
+            if type is public or private
+        - enable_social:
+            enable social features like response, vote, ect...
+        - enable_mailing:
+            enable mailing if users are following the annotation timeline
+        - enable_notification:
+            enable in player notification if the sidebar is closed
+    '''
+    slug = st.TextField(is_repr=True)
+    label = st.TextField()
+    enable_social = st.BooleanField()
+    enable_mailing = st.BooleanField()
+    enable_notification = st.BooleanField()
+
+
 class TagType(st.BaseModel):
     '''
         Represent a tag type(slide, chapter, ect...)
@@ -120,6 +143,7 @@ class TagType(st.BaseModel):
     enable_social = st.BooleanField()
     enable_mailing = st.BooleanField()
     enable_notification = st.BooleanField()
+    categories = st.ManyModelField(model=TagTypeCategory)
 
 
 class Index(st.BaseModel):

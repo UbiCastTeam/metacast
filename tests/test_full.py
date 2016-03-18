@@ -31,16 +31,20 @@ XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
     <index>
       <time>9000</time>
       <tags>
-        <tag type="slide">
-          <content>{ "label": "Slide 1", "type": { "slug": "slide" }}</content>
+        <tag type="question">
+          <content>{ "label": "Question 1", "type": { "slug": "question" }}</content>
         </tag>
       </tags>
     </index>
   </indexes>
   <tag_types>
     <tagtype>
-      <internal_type>slide</internal_type>
-      <slug>slide</slug>
+      <slug>question</slug>
+      <categories>
+        <tagtypecategory>
+          <slug>imlost</slug>
+        </tagtypecategory>
+      </categories>
     </tagtype>
   </tag_types>
   <videos>
@@ -83,8 +87,8 @@ JSON_RESULT_PYTHON2 = '''{
         {
             "tags": [
                 {
-                    "content": "{ \\"label\\": \\"Slide 1\\", \\"type\\": { \\"slug\\": \\"slide\\" }}", 
-                    "type": "slide"
+                    "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}", 
+                    "type": "question"
                 }
             ], 
             "time": 9000
@@ -97,8 +101,12 @@ JSON_RESULT_PYTHON2 = '''{
     }, 
     "tag_types": [
         {
-            "internal_type": "slide", 
-            "slug": "slide"
+            "categories": [
+                {
+                    "slug": "imlost"
+                }
+            ], 
+            "slug": "question"
         }
     ], 
     "title": "test", 
@@ -145,8 +153,8 @@ JSON_RESULT_PYTHON3 = '''{
         {
             "tags": [
                 {
-                    "content": "{ \\"label\\": \\"Slide 1\\", \\"type\\": { \\"slug\\": \\"slide\\" }}",
-                    "type": "slide"
+                    "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}",
+                    "type": "question"
                 }
             ],
             "time": 9000
@@ -159,8 +167,12 @@ JSON_RESULT_PYTHON3 = '''{
     },
     "tag_types": [
         {
-            "internal_type": "slide",
-            "slug": "slide"
+            "categories": [
+                {
+                    "slug": "imlost"
+                }
+            ],
+            "slug": "question"
         }
     ],
     "title": "test",
@@ -210,8 +222,8 @@ var metadata = {
         {
             "tags": [
                 {
-                    "content": "{ \\"label\\": \\"Slide 1\\", \\"type\\": { \\"slug\\": \\"slide\\" }}", 
-                    "type": "slide"
+                    "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}", 
+                    "type": "question"
                 }
             ], 
             "time": 9000
@@ -224,8 +236,12 @@ var metadata = {
     }, 
     "tag_types": [
         {
-            "internal_type": "slide", 
-            "slug": "slide"
+            "categories": [
+                {
+                    "slug": "imlost"
+                }
+            ], 
+            "slug": "question"
         }
     ], 
     "title": "test", 
@@ -275,8 +291,8 @@ var metadata = {
         {
             "tags": [
                 {
-                    "content": "{ \\"label\\": \\"Slide 1\\", \\"type\\": { \\"slug\\": \\"slide\\" }}",
-                    "type": "slide"
+                    "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}",
+                    "type": "question"
                 }
             ],
             "time": 9000
@@ -289,8 +305,12 @@ var metadata = {
     },
     "tag_types": [
         {
-            "internal_type": "slide",
-            "slug": "slide"
+            "categories": [
+                {
+                    "slug": "imlost"
+                }
+            ],
+            "slug": "question"
         }
     ],
     "title": "test",
@@ -330,14 +350,18 @@ class TestFull(unittest.TestCase):
         self.mc = models.MetaCast(title='test', layout='video', creation=datetime.datetime.now())
         self.mc.speaker = models.Speaker()
         self.mc.license = models.License(name='test', url='http://test')
-        self.mc.tag_types = [models.TagType(internal_type='slide', slug='slide')]
+        self.mc.tag_types = [
+            models.TagType(
+                slug='question',
+                categories=[models.TagTypeCategory(slug='imlost')])
+        ]
         self.mc.indexes = [
             models.Index(time=0),
             models.Index(time=452, tags=[
                 models.Tag(type='pre-start'),
             ]),
             models.Index(time=9000, tags=[
-                models.Tag(type='slide', content='{ "label": "Slide 1", "type": { "slug": "slide" }}'),
+                models.Tag(type='question', content='{ "label": "Question 1", "type": { "slug": "question" }}'),
             ]),
         ]
         self.mc.videos = [
@@ -382,8 +406,12 @@ class TestFull(unittest.TestCase):
         self.assertEqual(JS_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), result)
 
     def test_load_xml(self):
-        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8') as fp:
-            fp.write(XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
+        with tempfile.NamedTemporaryFile(mode='w') as fp:
+            text = XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
+            try:
+                fp.write(text.encode('utf-8'))  # Python 2
+            except TypeError:
+                fp.write(text)
             fp.flush()
             path = fp.name
             with open(path, 'rb') as fpr:
@@ -393,8 +421,12 @@ class TestFull(unittest.TestCase):
         self.assertIsInstance(mc, models.MetaCast)
 
     def test_load_json(self):
-        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8') as fp:
-            fp.write(JSON_RESULT_PYTHON3 % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
+        with tempfile.NamedTemporaryFile(mode='w') as fp:
+            text = JSON_RESULT_PYTHON3 % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
+            try:
+                fp.write(text.encode('utf-8'))  # Python 2
+            except TypeError:
+                fp.write(text)
             fp.flush()
             path = fp.name
             with open(path, 'rb') as fpr:
@@ -404,8 +436,12 @@ class TestFull(unittest.TestCase):
         self.assertIsInstance(mc, models.MetaCast)
 
     def test_load_js(self):
-        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8') as fp:
-            fp.write(JS_RESULT_PYTHON3 % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
+        with tempfile.NamedTemporaryFile(mode='w') as fp:
+            text = JS_RESULT_PYTHON3 % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
+            try:
+                fp.write(text.encode('utf-8'))  # Python 2
+            except TypeError:
+                fp.write(text)
             fp.flush()
             path = fp.name
             with open(path, 'rb') as fpr:
