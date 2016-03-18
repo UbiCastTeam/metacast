@@ -33,6 +33,11 @@ XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
       <tags>
         <tag type="question">
           <content>{ "label": "Question 1", "type": { "slug": "question" }}</content>
+          <category>
+            <tagtypecategory>
+              <slug>imlost</slug>
+            </tagtypecategory>
+          </category>
         </tag>
       </tags>
     </index>
@@ -87,6 +92,9 @@ JSON_RESULT_PYTHON2 = '''{
         {
             "tags": [
                 {
+                    "category": {
+                        "slug": "imlost"
+                    }, 
                     "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}", 
                     "type": "question"
                 }
@@ -153,6 +161,9 @@ JSON_RESULT_PYTHON3 = '''{
         {
             "tags": [
                 {
+                    "category": {
+                        "slug": "imlost"
+                    },
                     "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}",
                     "type": "question"
                 }
@@ -222,6 +233,9 @@ var metadata = {
         {
             "tags": [
                 {
+                    "category": {
+                        "slug": "imlost"
+                    }, 
                     "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}", 
                     "type": "question"
                 }
@@ -291,6 +305,9 @@ var metadata = {
         {
             "tags": [
                 {
+                    "category": {
+                        "slug": "imlost"
+                    },
                     "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}",
                     "type": "question"
                 }
@@ -361,7 +378,11 @@ class TestFull(unittest.TestCase):
                 models.Tag(type='pre-start'),
             ]),
             models.Index(time=9000, tags=[
-                models.Tag(type='question', content='{ "label": "Question 1", "type": { "slug": "question" }}'),
+                models.Tag(
+                    type='question',
+                    content='{ "label": "Question 1", "type": { "slug": "question" }}',
+                    category=models.TagTypeCategory(slug='imlost')
+                ),
             ]),
         ]
         self.mc.videos = [

@@ -65,21 +65,6 @@ class Resource(st.BaseModel):
     displayable = st.BooleanField(xml_attr=True)
 
 
-class Tag(st.BaseModel):
-    '''
-        Represent an annotation for mediaserver
-        or an action point for easycast
-        - type:
-            the slug of a TagType for mediaserver
-            or an internal tag type for easycast
-        - content:
-            a json for mediaserver that represent an annotation
-            or an internal value for easycast
-    '''
-    type = st.TextField(is_repr=True, xml_attr=True)
-    content = st.TextField()
-
-
 class TagTypeCategory(st.BaseModel):
     '''
         Represent a type category
@@ -143,6 +128,22 @@ class TagType(st.BaseModel):
     enable_mailing = st.BooleanField()
     enable_notification = st.BooleanField()
     categories = st.ManyModelField(model=TagTypeCategory)
+
+
+class Tag(st.BaseModel):
+    '''
+        Represent an annotation for mediaserver
+        or an action point for easycast
+        - type:
+            the slug of a TagType for mediaserver
+            or an internal tag type for easycast
+        - content:
+            a json for mediaserver that represent an annotation
+            or an internal value for easycast
+    '''
+    type = st.TextField(is_repr=True, xml_attr=True)
+    category = st.OneModelField(model=TagTypeCategory)
+    content = st.TextField()
 
 
 class Index(st.BaseModel):
