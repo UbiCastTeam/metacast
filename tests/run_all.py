@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
 import unittest
 import imp
 
@@ -10,4 +11,5 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(test_full.TestFull())
     suite.addTest(test_compat.TestCompatibility())
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    success = not unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()
+    sys.exit(success)
