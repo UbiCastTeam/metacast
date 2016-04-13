@@ -1241,11 +1241,9 @@ var metadata = {
                 }
             ],
             "source_hash": "autocam_5f4f.mkv_2015922141535_131670189",
-            "transcoding": [
-                {
-                    "service": "mediaserver"
-                }
-            ],
+            "transcoding": {
+                "service": "mediaserver"
+            },
             "width": 1280
         }
     ]
