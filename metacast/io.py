@@ -116,8 +116,7 @@ def load_js(fileobj):
     if start == -1:
         raise Exception('Invalid file: metadata variable not found.')
     json_str = js_str[start + len(to_find):]
-    if json_str.endswith(';'):
-        json_str = json_str[:-1]
+    json_str = json_str.rstrip().rstrip(';')
     return load_json_str(json_str)
 
 
