@@ -418,8 +418,9 @@ class BaseModel(object):
             empty = False
             if field.xml_attr:
                 try:
-                    val = val.decode("utf-8")  # Python 2
-                except AttributeError:
+                    if not isinstance(val, unicode):
+                        val = unicode(val, "utf-8")  # Python 2
+                except NameError:
                     pass  # Python 3
                 parent.set(field.name, val)
             else:
