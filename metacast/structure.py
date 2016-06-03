@@ -417,6 +417,10 @@ class BaseModel(object):
                 continue
             empty = False
             if field.xml_attr:
+                try:
+                    val = val.decode("utf-8")  # Python 2
+                except AttributeError:
+                    pass  # Python 3
                 parent.set(field.name, val)
             else:
                 node = parent if field.xml_inner else etree.Element(field.name)

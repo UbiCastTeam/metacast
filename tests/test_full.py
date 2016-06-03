@@ -17,7 +17,7 @@ from metacast import models
 from metacast.io import load_xml, dump_xml, load_json, dump_json, load_js, dump_js
 
 XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
-<metacast layout="video" version="3.0">
+<metacast layout="video" owner="ABéêèàùöû" version="3.0">
   <creation>%s</creation>
   <title>test</title>
   <license url="http://test">test</license>
@@ -107,6 +107,7 @@ JSON_RESULT_PYTHON2 = '''{
         "name": "test", 
         "url": "http://test"
     }, 
+    "owner": "AB\\u00e9\\u00ea\\u00e8\\u00e0\\u00f9\\u00f6\\u00fb", 
     "tag_types": [
         {
             "categories": [
@@ -176,6 +177,7 @@ JSON_RESULT_PYTHON3 = '''{
         "name": "test",
         "url": "http://test"
     },
+    "owner": "AB\\u00e9\\u00ea\\u00e8\\u00e0\\u00f9\\u00f6\\u00fb",
     "tag_types": [
         {
             "categories": [
@@ -248,6 +250,7 @@ var metadata = {
         "name": "test", 
         "url": "http://test"
     }, 
+    "owner": "AB\\u00e9\\u00ea\\u00e8\\u00e0\\u00f9\\u00f6\\u00fb", 
     "tag_types": [
         {
             "categories": [
@@ -320,6 +323,7 @@ var metadata = {
         "name": "test",
         "url": "http://test"
     },
+    "owner": "AB\\u00e9\\u00ea\\u00e8\\u00e0\\u00f9\\u00f6\\u00fb",
     "tag_types": [
         {
             "categories": [
@@ -364,7 +368,7 @@ var metadata = {
 
 class TestFull(unittest.TestCase):
     def setUp(self):
-        self.mc = models.MetaCast(title='test', layout='video', creation=datetime.datetime.now())
+        self.mc = models.MetaCast(title='test', layout='video', creation=datetime.datetime.now(), owner='ABéêèàùöû')
         self.mc.speaker = models.Speaker()
         self.mc.license = models.License(name='test', url='http://test')
         self.mc.tag_types = [
@@ -409,17 +413,22 @@ class TestFull(unittest.TestCase):
         self.test_load_js()
 
     def test_dump_xml(self):
+        try:
+            expected = unicode(XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), 'utf-8')
+        except NameError:
+            expected = XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
+        # expected = expected.decode('utf-8')
         buf = BytesIO()
         dump_xml(self.mc, buf)
         result = buf.getvalue().decode('utf-8')
-        self.assertEqual(XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), result)
+        self.assertEqual(expected, result)
 
     def test_dump_json(self):
         buf = BytesIO()
         dump_json(self.mc, buf)
         result = buf.getvalue().decode('utf-8')
         try:
-            JSON_RESULT = unicode(JSON_RESULT_PYTHON2)  # python 2 add space at the end offlines
+            JSON_RESULT = unicode(JSON_RESULT_PYTHON2, 'utf-8')  # python 2 add space at the end of lines
         except NameError:
             JSON_RESULT = JSON_RESULT_PYTHON3
         self.assertEqual(JSON_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), result)
@@ -429,7 +438,7 @@ class TestFull(unittest.TestCase):
         dump_js(self.mc, buf)
         result = buf.getvalue().decode('utf-8')
         try:
-            JS_RESULT = unicode(JS_RESULT_PYTHON2)  # python 2 add space at the end offlines
+            JS_RESULT = unicode(JS_RESULT_PYTHON2, 'utf-8')  # python 2 add space at the end of lines
         except NameError:
             JS_RESULT = JS_RESULT_PYTHON3
         self.assertEqual(JS_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), result)
@@ -437,10 +446,7 @@ class TestFull(unittest.TestCase):
     def test_load_xml(self):
         with tempfile.NamedTemporaryFile(mode='w') as fp:
             text = XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
-            try:
-                fp.write(text.encode('utf-8'))  # Python 2
-            except TypeError:
-                fp.write(text)
+            fp.write(text)
             fp.flush()
             path = fp.name
             with open(path, 'rb') as fpr:
