@@ -417,7 +417,6 @@ class TestFull(unittest.TestCase):
             expected = unicode(XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), 'utf-8')
         except NameError:
             expected = XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
-        # expected = expected.decode('utf-8')
         buf = BytesIO()
         dump_xml(self.mc, buf)
         result = buf.getvalue().decode('utf-8')
