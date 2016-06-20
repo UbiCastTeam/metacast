@@ -19,6 +19,7 @@ from metacast.io import load_xml, dump_xml, load_json, dump_json, load_js, dump_
 XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
 <metacast layout="video" owner="ABéêèàùöû" version="3.0">
   <creation>%s</creation>
+  <data>{"scorm": "2004"}</data>
   <title>test</title>
   <license url="http://test">test</license>
   <indexes>
@@ -80,6 +81,7 @@ XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
 
 JSON_RESULT_PYTHON2 = '''{
     "creation": "%s", 
+    "data": "{\\"scorm\\": \\"2004\\"}", 
     "indexes": [
         {
             "tags": [
@@ -150,6 +152,7 @@ JSON_RESULT_PYTHON2 = '''{
 }'''
 JSON_RESULT_PYTHON3 = '''{
     "creation": "%s",
+    "data": "{\\"scorm\\": \\"2004\\"}",
     "indexes": [
         {
             "tags": [
@@ -223,6 +226,7 @@ JS_RESULT_PYTHON2 = '''/* MetaCast - v3.0 */
 /* https://github.com/UbiCastTeam/metacast */
 var metadata = {
     "creation": "%s", 
+    "data": "{\\"scorm\\": \\"2004\\"}", 
     "indexes": [
         {
             "tags": [
@@ -296,6 +300,7 @@ JS_RESULT_PYTHON3 = '''/* MetaCast - v3.0 */
 /* https://github.com/UbiCastTeam/metacast */
 var metadata = {
     "creation": "%s",
+    "data": "{\\"scorm\\": \\"2004\\"}",
     "indexes": [
         {
             "tags": [
@@ -371,6 +376,7 @@ class TestFull(unittest.TestCase):
         self.mc = models.MetaCast(title='test', layout='video', creation=datetime.datetime.now(), owner='ABéêèàùöû')
         self.mc.speaker = models.Speaker()
         self.mc.license = models.License(name='test', url='http://test')
+        self.mc.data = {"scorm": "2004"}
         self.mc.tag_types = [
             models.TagType(
                 slug='question',

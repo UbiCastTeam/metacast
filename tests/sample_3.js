@@ -6,6 +6,7 @@ var metadata = {
         "name": "UBICAST"
     },
     "creation": "2015-09-22 11:59:04",
+    "data": "{\"scorm\": \"2004\"}",
     "indexes": [
         {
             "image": "capture_1442915939_413072.jpg",

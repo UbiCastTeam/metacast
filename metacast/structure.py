@@ -173,7 +173,7 @@ class JSONField(BaseField):
 
     def __init__(self, *args, **kwargs):
         if kwargs.get('initial') is None:
-            kwargs['initial'] = json.dumps(dict())
+            kwargs['initial'] = dict()
         super(JSONField, self).__init__(*args, **kwargs)
 
     def to_any(self):
