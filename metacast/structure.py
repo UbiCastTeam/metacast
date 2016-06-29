@@ -1,16 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-'''
-Models and fields base classes for MetaCast.
-'''
+
+"""Models and fields base classes for MetaCast."""
+
 import datetime
 import json
+import logging
 from lxml import etree
 try:
     strcls = unicode
+    basestrcls = basestring
 except NameError:
     # Python 3
     strcls = str
+    basestrcls = str
+logger = logging.getLogger("metacast.structure")
 
 
 # Fields
@@ -78,6 +82,12 @@ class TextField(BaseField):
         if kwargs.get('initial') is None:
             kwargs['initial'] = ''
         super(TextField, self).__init__(*args, **kwargs)
+
+    def to_any(self):
+        value = super(TextField, self).to_any()
+        if not isinstance(value, basestrcls):
+            value = str(value)
+        return value
 
 
 class BooleanField(BaseField):
@@ -422,7 +432,16 @@ class BaseModel(object):
                         val = unicode(val, "utf-8")  # Python 2
                 except NameError:
                     pass  # Python 3
-                parent.set(field.name, val)
+                try:
+                    parent.set(field.name, val)
+                except Exception as e:
+                    logger.error('Error when trying to serialize attribute "%s" of model "%s" to XML: %s', field.name, self.__class__.__name__, e)
+                    # Try to log the expected content of the node, without crashing if it fails
+                    try:
+                        logger.error('Field value: "%s", type: "%s"', val, type(val))
+                    except Exception:
+                        pass
+                    raise
             else:
                 node = parent if field.xml_inner else etree.Element(field.name)
                 if isinstance(field, SubModelField):
@@ -432,7 +451,16 @@ class BaseModel(object):
                         for el in val:
                             node.append(el)
                 else:
-                    node.text = val
+                    try:
+                        node.text = val
+                    except Exception as e:
+                        logger.error('Error when trying to serialize field "%s" of model "%s" to XML: %s', field.name, self.__class__.__name__, e)
+                        # Try to log the expected content of the node, without crashing if it fails
+                        try:
+                            logger.error('Field value: "%s", type: "%s"', val, type(val))
+                        except Exception:
+                            pass
+                        raise
                 if not field.xml_inner:
                     parent.append(node)
         if empty and none_if_empty:
