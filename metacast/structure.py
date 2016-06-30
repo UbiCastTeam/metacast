@@ -425,13 +425,14 @@ class BaseModel(object):
             val = field.to_xml()
             if val is None:
                 continue
-            empty = False
-            if field.xml_attr:
+            if isinstance(val, basestrcls):
                 try:
                     if not isinstance(val, unicode):
                         val = unicode(val, "utf-8")  # Python 2
                 except NameError:
                     pass  # Python 3
+            empty = False
+            if field.xml_attr:
                 try:
                     parent.set(field.name, val)
                 except Exception as e:
