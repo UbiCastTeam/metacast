@@ -85,7 +85,7 @@ class TextField(BaseField):
 
     def to_any(self):
         value = super(TextField, self).to_any()
-        if not isinstance(value, basestrcls):
+        if value is not None and not isinstance(value, basestrcls):
             value = str(value)
         return value
 
