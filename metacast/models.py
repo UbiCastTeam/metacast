@@ -120,6 +120,7 @@ class TagType(st.BaseModel):
     label = st.TextField()
     color = st.TextField()
     visibility = st.BooleanField()
+    editorial = st.BooleanField()
     allow_title = st.BooleanField()
     allow_content = st.BooleanField()
     allow_attachment = st.BooleanField()
