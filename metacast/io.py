@@ -53,6 +53,12 @@ def load_xml_bytes(xml_bytes):
             for sub in element:
                 if sub.tag == 'publishid' and sub.get('type'):
                     sub.set('service', sub.get('type'))
+                elif sub.tag == 'creation_date' and sub.text:
+                    try:
+                        date = datetime.datetime.strptime(sub.text, '%a %b %d %H:%M:%S %Y')
+                        sub.text = date.strftime('%Y-%m-%d %H:%M:%S')
+                    except ValueError:
+                        pass
     # load from xml
     mc = MetaCast.from_xml(root)
     return mc
