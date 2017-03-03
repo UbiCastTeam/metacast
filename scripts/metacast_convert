@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Copyright 2017, Florent Thiery
+import metacast.io
+import sys
+import os
+
+try:
+    i = sys.argv[1]
+    o = sys.argv[2]
+except Exception:
+    print('Usage: metacast_convert metadata.js metadata.xml')
+    sys.exit(1)
+
+prefix, ext = os.path.splitext(o)
+if ext not in ['.js', '.xml']:
+    print('Output file extension must be js or xml')
+    sys.exit(1)
+
+mi = metacast.io.load(i)
+metacast.io.dump(mi, o)
+print('Converted %s to %s' % (i, o))
