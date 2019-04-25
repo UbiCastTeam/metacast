@@ -13,12 +13,13 @@ except ImportError:
     # Python 3
     from io import BytesIO
 
+from metacast import __version__
 from metacast import models
 from metacast.io import load_xml, dump_xml, load_json, dump_json, load_js, dump_js
 
 XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
-<metacast layout="video" owner="ABéêèàùöû" version="3.0">
-  <creation>%s</creation>
+<metacast layout="video" owner="ABéêèàùöû" version="%(version)s">
+  <creation>%(creation)s</creation>
   <data>{"scorm": "2004"}</data>
   <title>test</title>
   <license url="http://test">test</license>
@@ -79,79 +80,8 @@ XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
 </metacast>
 '''
 
-JSON_RESULT_PYTHON2 = '''{
-    "creation": "%s", 
-    "data": "{\\"scorm\\": \\"2004\\"}", 
-    "indexes": [
-        {
-            "tags": [
-                {
-                    "type": "pre-start"
-                }
-            ], 
-            "time": 452
-        }, 
-        {
-            "tags": [
-                {
-                    "category": {
-                        "slug": "imlost"
-                    }, 
-                    "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}", 
-                    "type": "question"
-                }
-            ], 
-            "time": 9000
-        }
-    ], 
-    "layout": "video", 
-    "license": {
-        "name": "test", 
-        "url": "http://test"
-    }, 
-    "owner": "AB\\u00e9\\u00ea\\u00e8\\u00e0\\u00f9\\u00f6\\u00fb", 
-    "tag_types": [
-        {
-            "categories": [
-                {
-                    "slug": "imlost"
-                }
-            ], 
-            "slug": "question"
-        }
-    ], 
-    "title": "test", 
-    "version": "3.0", 
-    "videos": [
-        {
-            "filename": "media", 
-            "publish_ids": [
-                {
-                    "name": "test", 
-                    "service": "amazon"
-                }
-            ], 
-            "transcoding": {
-                "outputs": [
-                    {
-                        "height": 720, 
-                        "name": "video_high.mp4", 
-                        "profile": {
-                            "cost": 2.0, 
-                            "label": "MP4 HD ready", 
-                            "name": "mp4_hd_ready", 
-                            "recipe": "{\\"audio_codec\\": \\"aac\\", \\"audio_normalize\\": true, \\"audio_quality\\": 3, \\"height\\": 720, \\"hint\\": true, \\"keyframe_interval\\": 25, \\"quality\\": 4, \\"video_codec\\": \\"h264\\"}"
-                        }, 
-                        "type": "hd_video"
-                    }
-                ], 
-                "service": "zencoder"
-            }
-        }
-    ]
-}'''
-JSON_RESULT_PYTHON3 = '''{
-    "creation": "%s",
+JSON_RESULT = '''{
+    "creation": "%(creation)s",
     "data": "{\\"scorm\\": \\"2004\\"}",
     "indexes": [
         {
@@ -192,7 +122,7 @@ JSON_RESULT_PYTHON3 = '''{
         }
     ],
     "title": "test",
-    "version": "3.0",
+    "version": "%(version)s",
     "videos": [
         {
             "filename": "media",
@@ -222,84 +152,10 @@ JSON_RESULT_PYTHON3 = '''{
     ]
 }'''
 
-JS_RESULT_PYTHON2 = '''/* MetaCast - v3.0 */
+JS_RESULT = '''/* MetaCast - v%(version)s */
 /* https://github.com/UbiCastTeam/metacast */
 var metadata = {
-    "creation": "%s", 
-    "data": "{\\"scorm\\": \\"2004\\"}", 
-    "indexes": [
-        {
-            "tags": [
-                {
-                    "type": "pre-start"
-                }
-            ], 
-            "time": 452
-        }, 
-        {
-            "tags": [
-                {
-                    "category": {
-                        "slug": "imlost"
-                    }, 
-                    "content": "{ \\"label\\": \\"Question 1\\", \\"type\\": { \\"slug\\": \\"question\\" }}", 
-                    "type": "question"
-                }
-            ], 
-            "time": 9000
-        }
-    ], 
-    "layout": "video", 
-    "license": {
-        "name": "test", 
-        "url": "http://test"
-    }, 
-    "owner": "AB\\u00e9\\u00ea\\u00e8\\u00e0\\u00f9\\u00f6\\u00fb", 
-    "tag_types": [
-        {
-            "categories": [
-                {
-                    "slug": "imlost"
-                }
-            ], 
-            "slug": "question"
-        }
-    ], 
-    "title": "test", 
-    "version": "3.0", 
-    "videos": [
-        {
-            "filename": "media", 
-            "publish_ids": [
-                {
-                    "name": "test", 
-                    "service": "amazon"
-                }
-            ], 
-            "transcoding": {
-                "outputs": [
-                    {
-                        "height": 720, 
-                        "name": "video_high.mp4", 
-                        "profile": {
-                            "cost": 2.0, 
-                            "label": "MP4 HD ready", 
-                            "name": "mp4_hd_ready", 
-                            "recipe": "{\\"audio_codec\\": \\"aac\\", \\"audio_normalize\\": true, \\"audio_quality\\": 3, \\"height\\": 720, \\"hint\\": true, \\"keyframe_interval\\": 25, \\"quality\\": 4, \\"video_codec\\": \\"h264\\"}"
-                        }, 
-                        "type": "hd_video"
-                    }
-                ], 
-                "service": "zencoder"
-            }
-        }
-    ]
-};'''
-
-JS_RESULT_PYTHON3 = '''/* MetaCast - v3.0 */
-/* https://github.com/UbiCastTeam/metacast */
-var metadata = {
-    "creation": "%s",
+    "creation": "%(creation)s",
     "data": "{\\"scorm\\": \\"2004\\"}",
     "indexes": [
         {
@@ -340,7 +196,7 @@ var metadata = {
         }
     ],
     "title": "test",
-    "version": "3.0",
+    "version": "%(version)s",
     "videos": [
         {
             "filename": "media",
@@ -420,9 +276,9 @@ class TestFull(unittest.TestCase):
 
     def test_dump_xml(self):
         try:
-            expected = unicode(XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), 'utf-8')
+            expected = unicode(XML_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')), 'utf-8')
         except NameError:
-            expected = XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
+            expected = XML_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
         buf = BytesIO()
         dump_xml(self.mc, buf)
         result = buf.getvalue().decode('utf-8')
@@ -433,24 +289,24 @@ class TestFull(unittest.TestCase):
         dump_json(self.mc, buf)
         result = buf.getvalue().decode('utf-8')
         try:
-            JSON_RESULT = unicode(JSON_RESULT_PYTHON2, 'utf-8')  # python 2 add space at the end of lines
+            expected = unicode(JSON_RESULT.replace(',', ', '), 'utf-8')  # python 2 add space after comas even on line end
         except NameError:
-            JSON_RESULT = JSON_RESULT_PYTHON3
-        self.assertEqual(JSON_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), result)
+            expected = JSON_RESULT
+        self.assertEqual(expected % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')), result)
 
     def test_dump_js(self):
         buf = BytesIO()
         dump_js(self.mc, buf)
         result = buf.getvalue().decode('utf-8')
         try:
-            JS_RESULT = unicode(JS_RESULT_PYTHON2, 'utf-8')  # python 2 add space at the end of lines
+            expected = unicode(JS_RESULT.replace(',', ', '), 'utf-8')  # python 2 add space after comas even on line end
         except NameError:
-            JS_RESULT = JS_RESULT_PYTHON3
-        self.assertEqual(JS_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'), result)
+            expected = JS_RESULT
+        self.assertEqual(expected % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')), result)
 
     def test_load_xml(self):
         with tempfile.NamedTemporaryFile(mode='w') as fp:
-            text = XML_RESULT % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
+            text = XML_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
             fp.write(text)
             fp.flush()
             path = fp.name
@@ -462,7 +318,7 @@ class TestFull(unittest.TestCase):
 
     def test_load_json(self):
         with tempfile.NamedTemporaryFile(mode='w') as fp:
-            text = JSON_RESULT_PYTHON3 % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
+            text = JSON_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
             try:
                 fp.write(text.encode('utf-8'))  # Python 2
             except TypeError:
@@ -477,7 +333,7 @@ class TestFull(unittest.TestCase):
 
     def test_load_js(self):
         with tempfile.NamedTemporaryFile(mode='w') as fp:
-            text = JS_RESULT_PYTHON3 % self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')
+            text = JS_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
             try:
                 fp.write(text.encode('utf-8'))  # Python 2
             except TypeError:
@@ -489,6 +345,7 @@ class TestFull(unittest.TestCase):
                 fpr.close()
             fp.close()
         self.assertIsInstance(mc, models.MetaCast)
+
 
 if __name__ == '__main__':
     unittest.main()

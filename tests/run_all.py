@@ -7,6 +7,7 @@ import imp
 test_full = imp.load_source('test_full', 'test_full.py')
 test_compat = imp.load_source('test_compat', 'test_compat.py')
 
+
 if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(test_full.TestFull())

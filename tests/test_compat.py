@@ -26,6 +26,10 @@ class TestCompatibility(unittest.TestCase):
             (load_json, dump_json, ['sample_1.json', 'sample_2.json', 'sample_3.json']),
             (load_js, dump_js, ['sample_1.js', 'sample_2.js', 'sample_3.js']),
         ]
+        try:
+            expected_type = unicode  # python 2 backward compatibility
+        except NameError:
+            expected_type = str
         for load_fct, dump_fct, files in tests:
             for name in files:
                 path = os.path.join(base_path, name)
@@ -34,10 +38,8 @@ class TestCompatibility(unittest.TestCase):
                 buf = BytesIO()
                 dump_fct(mc, buf)
                 result = buf.getvalue()
-                try:
-                    self.assertIsInstance(result.decode('utf-8'), str)
-                except AssertionError:
-                    self.assertIsInstance(result.decode('utf-8'), unicode)  # python 2 backward compatibility
+                self.assertIsInstance(result.decode('utf-8'), expected_type)
+
 
 if __name__ == '__main__':
     unittest.main()
