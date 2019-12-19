@@ -256,6 +256,7 @@ class MetaCast(st.BaseModel):
     speaker = st.OneModelField(model=Speaker, xml_inner=True)
     company = st.OneModelField(model=Company, xml_inner=True)
     license = st.OneModelField(model=License, xml_inner=True)
+    path = st.TextField()
     location = st.TextField()
     category = st.TextField()
     creation = st.DatetimeField()
