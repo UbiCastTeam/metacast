@@ -3,21 +3,14 @@
 '''
 MetaCast - Compatibility test, import and export in older formats.
 '''
-from __future__ import print_function
+from io import BytesIO
 import os
 import unittest
-try:
-    from StringIO import BytesIO
-except ImportError:
-    # Python 3
-    from io import BytesIO
 
 from metacast.io import load_xml, dump_xml, load_json, dump_json, load_js, dump_js
 
 
 class TestCompatibility(unittest.TestCase):
-    def runTest(self):
-        self.test_full()
 
     def test_full(self):
         base_path = os.path.dirname(__file__)

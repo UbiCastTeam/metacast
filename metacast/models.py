@@ -1,9 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Models for MetaCast.
 '''
-from __future__ import print_function
 from metacast import structure as st
 from metacast import utils
 

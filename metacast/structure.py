@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-"""Models and fields base classes for MetaCast."""
-
+'''
+Models and fields base classes for MetaCast.
+'''
 import datetime
 import json
 import logging

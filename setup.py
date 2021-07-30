@@ -1,10 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import imp
-from distutils.core import setup
+from setuptools import setup
 
-metacast = imp.load_source('metacast', 'metacast/__init__.py')
+import metacast
 
 setup(
     name='metacast',

@@ -3,15 +3,10 @@
 '''
 MetaCast - Test of import/export functions.
 '''
-from __future__ import print_function
+from io import BytesIO
 import datetime
-import unittest
 import tempfile
-try:
-    from StringIO import BytesIO
-except ImportError:
-    # Python 3
-    from io import BytesIO
+import unittest
 
 from metacast import __version__
 from metacast import models
@@ -265,14 +260,6 @@ class TestFull(unittest.TestCase):
                 ])
             )
         ]
-
-    def runTest(self):
-        self.test_dump_xml()
-        self.test_dump_json()
-        self.test_dump_js()
-        self.test_load_xml()
-        self.test_load_json()
-        self.test_load_js()
 
     def test_dump_xml(self):
         try:
