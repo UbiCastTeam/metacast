@@ -5,4 +5,4 @@ MetaCast is a format to store and export metadata of rich media videos and an AP
 
 Examples of use are avaible in the tests folder.
 
-Requires: Python 3.7+
+Requires: Python 3.9+
