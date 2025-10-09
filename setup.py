@@ -14,6 +14,5 @@ setup(
     url='https://github.com/UbiCastTeam/metacast',
     license='GNU LGPL v2.1',
     packages=['metacast'],
-    scripts=['scripts/metacast_timeshift'],
     install_requires=['lxml'],
 )
