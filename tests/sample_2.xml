@@ -2,8 +2,8 @@
 <metacast version="2.6" type="webinar" language="fr">
   <creation>Wed May 13 09:52:19 2009</creation>
   <title>Éléments d'architecture client-serveur</title>
-  <speaker email="Michel.Simatic@it-sudparis.eu">Michel SIMATIC</speaker>
-  <company url="http://www.telecom-sudparis.eu/">TELECOM SudParis</company>
+  <speaker email="jean.dupond@university.local">Jean DUPOND</speaker>
+  <company url="http://www.university.local/">My University</company>
   <description>Les différentes architectures logicielles pour traiter le flux de requêtes arrivant au niveau d'un serveur</description>
   <license url="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/">Creative Commons By-NC-ND</license>
   <category>Cours de réseau</category>
@@ -27,24 +27,24 @@
       <height>576</height>
       <ratio>4_3</ratio>
       <creation_date>2013-02-05_16-35-26</creation_date>
-      <publishid service="url">https://videossiteubicast.s3.amazonaws.com/2009-05-13_09-52-19backup.wmv</publishid>
-      <publishid service="rambla">/demo/tmsp/2009-05-13/michel_simatic</publishid>
+      <publishid service="url">https://videos.local/2009-05-13_09-52-19backup.wmv</publishid>
+      <publishid service="ftp">/my-university/2009-05-13/jean_dupond</publishid>
     </video>
     <video edited="1">
       <filename>2009-05-13_09-52-19backup.mp4</filename>
-      <publishid service="botr">58049</publishid>
+      <publishid service="obj-stor">58049</publishid>
     </video>
   </videos>
   <resources>
     <resource service="amazon" quality="high" downloadable="1" displayable="1">
-      <filename>comparaison-mpeg4_f14afd/comparaison-mpeg4_low.mp4</filename>
-      <server>rtmp://streaming.ubicast.net/vod</server>
+      <filename>comparaison-mpeg4_f14afd/media_low.mp4</filename>
+      <server>rtmp://streaming.local/vod</server>
     </resource>
     <resource quality="high" displayable="1">
-      <filename>http://videos.bench.ubicast.net/comparaison-mpeg4_f14afd/comparaison-mpeg4_high.webm</filename>
+      <filename>http://videos.local/comparaison-mpeg4_f14afd/media_high.webm</filename>
     </resource>
     <resource>
-      <filename>http://videos.bench.ubicast.net/comparaison-mpeg4_f14afd/comparaison-mpeg4_low.mp4</filename>
+      <filename>http://videos.local/comparaison-mpeg4_f14afd/media_low.mp4</filename>
     </resource>
   </resources>
   <indexes>

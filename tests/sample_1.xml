@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metacast version="2.1" type="webinar" language="fr">
   <title>Éléments d'architecture client-serveur</title>
-  <speaker email="Michel.Simatic@it-sudparis.eu">Michel SIMATIC</speaker>
-  <company url="http://www.telecom-sudparis.eu/">TELECOM SudParis</company>
+  <speaker email="jean.dupond@university.local">Jean DUPOND</speaker>
+  <company url="http://www.university.local/">My University</company>
   <description>Les différentes architectures logicielles pour traiter le flux de requêtes arrivant au niveau d'un serveur</description>
   <creation>Wed May 13 09:52:19 2009</creation>
   <license url="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/">Creative Commons By-NC-ND</license>
@@ -14,12 +14,12 @@
     </video>
     <video edited="1">
       <filename>2009-05-13_09-52-19backup.wmv</filename>
-      <publishid service="url">https://videossiteubicast.s3.amazonaws.com/2009-05-13_09-52-19backup.wmv</publishid>
-      <publishid service="rambla">/demo/tmsp/2009-05-13/michel_simatic</publishid>
+      <publishid service="url">https://videos.local/2009-05-13_09-52-19backup.wmv</publishid>
+      <publishid service="ftp">/my-university/2009-05-13/jean_dupond</publishid>
     </video>
     <video edited="1">
       <filename>2009-05-13_09-52-19backup.mp4</filename>
-      <publishid service="botr">58049</publishid>
+      <publishid service="obj-stor">58049</publishid>
     </video>
   </videos>
   <chapters>

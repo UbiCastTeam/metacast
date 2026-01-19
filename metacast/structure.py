@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 '''
 Models and fields base classes for MetaCast.
 '''
@@ -7,31 +5,24 @@ import datetime
 import json
 import logging
 from lxml import etree
-try:
-    strcls = unicode
-    basestrcls = basestring
-except NameError:
-    # Python 3
-    strcls = str
-    basestrcls = str
-logger = logging.getLogger("metacast.structure")
+logger = logging.getLogger(__name__)
 
 
-# Fields
-# ----------------------------------------------------------------------------
-class BaseField(object):
+class BaseField:
 
     def __init__(self, initial=None, is_repr=False, xml_attr=False, xml_inner=False):
-        object.__init__(self)
         self.name = 'filled in model init'
         self.value = initial
         self.initial = initial
-        self.is_repr = is_repr  # used to indicate whether this field should be used to represent the model containing it or not
-        self.xml_attr = xml_attr  # only used for xml
+        # "is_repr" is used to indicate whether this field should be used to represent the model
+        self.is_repr = is_repr
+        # "xml_attr" is used to indicate if the field value should be put as attribute in XML files
+        self.xml_attr = xml_attr
+        # "xml_inner" is used to indicate if the field value should be put as tag content in XML files
         self.xml_inner = xml_inner
 
     def __repr__(self):
-        return '%s=%s' % (self.name, self.value)
+        return f'{self.name}={self.value}'
 
     def set_initial(self):
         if callable(self.initial):
@@ -81,11 +72,11 @@ class TextField(BaseField):
     def __init__(self, *args, **kwargs):
         if kwargs.get('initial') is None:
             kwargs['initial'] = ''
-        super(TextField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def to_any(self):
-        value = super(TextField, self).to_any()
-        if value is not None and not isinstance(value, basestrcls):
+        value = super().to_any()
+        if value is not None and not isinstance(value, str):
             value = str(value)
         return value
 
@@ -95,7 +86,7 @@ class BooleanField(BaseField):
     def __init__(self, *args, **kwargs):
         if kwargs.get('initial') is None:
             kwargs['initial'] = False
-        super(BooleanField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def to_json(self):
         if self.value != self.initial:
@@ -123,7 +114,7 @@ class IntegerField(BaseField):
     def __init__(self, *args, **kwargs):
         if kwargs.get('initial') is None:
             kwargs['initial'] = 0
-        super(IntegerField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def to_xml(self):
         if self.value is not None and self.value != self.initial:
@@ -141,7 +132,7 @@ class FloatField(BaseField):
     def __init__(self, *args, **kwargs):
         if kwargs.get('initial') is None:
             kwargs['initial'] = 0.0
-        super(FloatField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def to_xml(self):
         if self.value is not None and self.value != self.initial:
@@ -184,7 +175,7 @@ class JSONField(BaseField):
     def __init__(self, *args, **kwargs):
         if kwargs.get('initial') is None:
             kwargs['initial'] = dict()
-        super(JSONField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def to_any(self):
         if self.value != self.initial:
@@ -202,7 +193,7 @@ class ListField(BaseField):
     def __init__(self, *args, **kwargs):
         if kwargs.get('initial') is None:
             kwargs['initial'] = list
-        super(ListField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def to_json(self):
         if self.value != self.initial and self.value:
@@ -210,7 +201,7 @@ class ListField(BaseField):
 
     def to_xml(self):
         if self.value != self.initial:
-            return strcls(', ').join(self.value) if self.value else None
+            return ', '.join(self.value) if self.value else None
 
     def from_xml(self, data):
         if data is None:
@@ -224,7 +215,7 @@ class SubModelField(BaseField):
     def __init__(self, model, mono=False, *args, **kwargs):
         # Changing initial value for this field is not allowed
         kwargs['initial'] = list
-        super(SubModelField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.model = model
         self.mono = mono
 
@@ -312,7 +303,7 @@ class OneModelField(SubModelField):
 
     def __init__(self, *args, **kwargs):
         kwargs['mono'] = True
-        super(OneModelField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.initial = None
 
 
@@ -320,16 +311,13 @@ class ManyModelField(SubModelField):
 
     def __init__(self, *args, **kwargs):
         kwargs['mono'] = False
-        super(ManyModelField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
 
-# Models
-# ----------------------------------------------------------------------------
-class BaseModel(object):
+class BaseModel:
     ORDER = {None: 0, True: 1, False: 2}  # used to set order of appearance in exports
 
     def __init__(self, *args, **kwargs):
-        object.__init__(self)
         if args:
             raise ValueError('Non-keyword arguments are not accepted')
         if hasattr(self, 'fields'):
@@ -425,21 +413,18 @@ class BaseModel(object):
             val = field.to_xml()
             if val is None:
                 continue
-            if isinstance(val, basestrcls):
-                try:
-                    if not isinstance(val, unicode):
-                        val = unicode(val, "utf-8")  # Python 2
-                except NameError:
-                    pass  # Python 3
             empty = False
             if field.xml_attr:
                 try:
                     parent.set(field.name, val)
-                except Exception as e:
-                    logger.error('Error when trying to serialize attribute "%s" of model "%s" to XML: %s', field.name, self.__class__.__name__, e)
+                except Exception as err:
+                    logger.error(
+                        f'Error when trying to serialize attribute "{field.name}" '
+                        f'of model "{self.__class__.__name__}" to XML: {err}'
+                    )
                     # Try to log the expected content of the node, without crashing if it fails
                     try:
-                        logger.error('Field value: "%s", type: "%s"', val, type(val))
+                        logger.error(f'Field value: "{val}", type: "{type(val)}"')
                     except Exception:
                         pass
                     raise
@@ -454,11 +439,14 @@ class BaseModel(object):
                 else:
                     try:
                         node.text = val
-                    except Exception as e:
-                        logger.error('Error when trying to serialize field "%s" of model "%s" to XML: %s', field.name, self.__class__.__name__, e)
+                    except Exception as err:
+                        logger.error(
+                            f'Error when trying to serialize field "{field.name}" '
+                            f'of model "{self.__class__.__name__}" to XML: {err}'
+                        )
                         # Try to log the expected content of the node, without crashing if it fails
                         try:
-                            logger.error('Field value: "%s", type: "%s"', val, type(val))
+                            logger.error(f'Field value: "{val}", type: "{type(val)}"')
                         except Exception:
                             pass
                         raise

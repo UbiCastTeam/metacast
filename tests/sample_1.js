@@ -3,8 +3,8 @@
 var metadata = {
     "category": "Cours de r\u00e9seau",
     "company": {
-        "name": "TELECOM SudParis",
-        "url": "http://www.telecom-sudparis.eu/"
+        "name": "My University",
+        "url": "http://www.university.local/"
     },
     "creation": "2009-05-13 09:52:19",
     "description": "Les diff\u00e9rentes architectures logicielles pour traiter le flux de requ\u00eates arrivant au niveau d'un serveur",
@@ -60,8 +60,8 @@ var metadata = {
         "url": "http://creativecommons.org/licenses/by-nc-nd/2.0/fr/"
     },
     "speaker": {
-        "email": "Michel.Simatic@it-sudparis.eu",
-        "name": "Michel SIMATIC"
+        "email": "jean.dupond@university.local",
+        "name": "Jean DUPOND"
     },
     "title": "\u00c9l\u00e9ments d'architecture client-serveur",
     "version": "3.0",
@@ -75,12 +75,12 @@ var metadata = {
             "is_edited": true,
             "publish_ids": [
                 {
-                    "name": "https://videossiteubicast.s3.amazonaws.com/2009-05-13_09-52-19backup.wmv",
+                    "name": "https://videos.local/2009-05-13_09-52-19backup.wmv",
                     "service": "url"
                 },
                 {
-                    "name": "/demo/tmsp/2009-05-13/michel_simatic",
-                    "service": "rambla"
+                    "name": "/my-university/2009-05-13/jean_dupond",
+                    "service": "ftp"
                 }
             ]
         },
@@ -90,7 +90,7 @@ var metadata = {
             "publish_ids": [
                 {
                     "name": "58049",
-                    "service": "botr"
+                    "service": "obj-stor"
                 }
             ]
         }

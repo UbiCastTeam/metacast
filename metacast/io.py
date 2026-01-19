@@ -1,21 +1,18 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 '''
 Dump functions for MetaCast.
 '''
 import json
 import datetime
-from lxml import etree
+from xml.etree import ElementTree
+from pathlib import Path
 
 from metacast import __version__
 from metacast import utils
 from metacast.models import MetaCast
 
 
-# XML
-# ----------------------------------------------------------------------------
-def load_xml_bytes(xml_bytes):
-    root = etree.fromstring(xml_bytes)
+def load_xml(content):
+    root = ElementTree.fromstring(content)
     # apply compatibility changes to data
     # change layout (version < 3.0)
     if root.get('type'):
@@ -48,7 +45,7 @@ def load_xml_bytes(xml_bytes):
     videos = root.find('videos')
     if videos is not None:
         for element in videos:
-            for attr in element.attrib:
+            for attr in list(element.attrib):
                 element.set('is_%s' % attr, element.get(attr))
             for sub in element:
                 if sub.tag == 'publishid' and sub.get('type'):
@@ -64,98 +61,106 @@ def load_xml_bytes(xml_bytes):
     return mc
 
 
-def dump_xml_bytes(mc):
+def dump_xml(mc):
     data = mc.to_xml()
     data.set('version', __version__)
-    doc = etree.ElementTree(data)
-    return etree.tostring(doc, pretty_print=True, xml_declaration=True, encoding='utf-8')
+    ElementTree.indent(data)
+    return ElementTree.tostring(data, xml_declaration=True, encoding='unicode')
 
 
-def load_xml(fileobj):
-    data = fileobj.read()
-    return load_xml_bytes(data)
-
-
-def dump_xml(mc, fileobj):
-    data = dump_xml_bytes(mc)
-    fileobj.write(data)
-
-
-# JSON
-# ----------------------------------------------------------------------------
-def load_json_str(json_str):
-    data = json.loads(json_str)
+def load_json(content):
+    data = json.loads(content)
     mc = MetaCast.from_json(data)
     return mc
 
 
-def dump_json_str(mc, pretty=True):
+def dump_json(mc):
     data = mc.to_json()
     data['version'] = __version__
-    if pretty:
-        data = json.dumps(data, sort_keys=True, indent=4)
-    else:
-        data = json.dumps(data, sort_keys=True)
-    return data
+    content = json.dumps(data, sort_keys=True, indent=4)
+    return content
 
 
-def load_json(fileobj):
-    data = fileobj.read().decode('utf-8')
-    return load_json_str(data)
-
-
-def dump_json(mc, fileobj):
-    data = dump_json_str(mc)
-    fileobj.write(data.encode('utf-8'))
-
-
-# JS
-# ----------------------------------------------------------------------------
 JS_HEADER = '''/* MetaCast - v%s */
 /* https://github.com/UbiCastTeam/metacast */''' % __version__
 
 
-def load_js(fileobj):
-    js_str = fileobj.read().decode('utf-8')
+def load_js(content):
     to_find = 'var metadata = '
-    start = js_str.find(to_find)
+    start = content.find(to_find)
     if start == -1:
-        raise Exception('Invalid file: metadata variable not found.')
-    json_str = js_str[start + len(to_find):]
-    json_str = json_str.rstrip().rstrip(';')
-    return load_json_str(json_str)
+        raise ValueError('Invalid file content: metadata variable not found.')
+    json_content = content[start + len(to_find):]
+    json_content = json_content.rstrip().rstrip(';')
+    return load_json(json_content)
 
 
-def dump_js(mc, fileobj):
-    data = dump_json_str(mc)
-    data = JS_HEADER + '\nvar metadata = ' + data + ';'
-    fileobj.write(data.encode('utf-8'))
+def dump_js(mc):
+    content = dump_json(mc)
+    return JS_HEADER + '\nvar metadata = ' + content + ';'
 
 
-# Dynamic
-# ----------------------------------------------------------------------------
 def load(path):
-    if path.endswith('xml'):
+    if not isinstance(path, Path):
+        path = Path(path)
+
+    if path.name.endswith('xml'):
         load_fct = load_xml
-    elif path.endswith('json'):
+    elif path.name.endswith('json'):
         load_fct = load_json
-    elif path.endswith('js'):
+    elif path.name.endswith('js'):
         load_fct = load_js
     else:
-        raise Exception('Invalid file extension.')
-    with open(path, 'rb') as fileobj:
-        mc = load_fct(fileobj)
+        raise ValueError('Invalid path extension.')
+
+    with open(path, 'r') as fileobj:
+        content = fileobj.read()
+
+    mc = load_fct(content)
+    return mc
+
+
+def load_file(fileobj):
+    content = fileobj.read()
+
+    if content.startswith('<'):
+        load_fct = load_xml
+    elif content.startswith('{'):
+        load_fct = load_json
+    elif content.startswith('/'):
+        load_fct = load_js
+    else:
+        raise ValueError('Invalid file content.')
+
+    mc = load_fct(content)
     return mc
 
 
 def dump(mc, path):
-    if path.endswith('xml'):
+    if not isinstance(path, Path):
+        path = Path(path)
+
+    if path.name.endswith('xml'):
         dump_fct = dump_xml
-    elif path.endswith('json'):
+    elif path.name.endswith('json'):
         dump_fct = dump_json
-    elif path.endswith('js'):
+    elif path.name.endswith('js'):
         dump_fct = dump_js
     else:
-        raise Exception('Invalid file extension.')
-    with open(path, 'wb') as fileobj:
-        dump_fct(mc, fileobj)
+        raise ValueError('Invalid path extension.')
+
+    with open(path, 'w') as fileobj:
+        fileobj.write(dump_fct(mc))
+
+
+def dump_file(mc, fileobj):
+    if fileobj.name.endswith('xml'):
+        dump_fct = dump_xml
+    elif fileobj.name.endswith('json'):
+        dump_fct = dump_json
+    elif fileobj.name.endswith('js'):
+        dump_fct = dump_js
+    else:
+        raise ValueError('Invalid file extension.')
+
+    fileobj.write(dump_fct(mc))

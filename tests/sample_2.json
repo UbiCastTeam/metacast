@@ -16,8 +16,8 @@
     ],
     "category": "Cours de r\u00e9seau",
     "company": {
-        "name": "TELECOM SudParis",
-        "url": "http://www.telecom-sudparis.eu/"
+        "name": "My University",
+        "url": "http://www.university.local/"
     },
     "creation": "2009-05-13 09:52:19",
     "description": "Les diff\u00e9rentes architectures logicielles pour traiter le flux de requ\u00eates arrivant au niveau d'un serveur",
@@ -101,20 +101,20 @@
         {
             "displayable": true,
             "downloadable": true,
-            "filename": "comparaison-mpeg4_f14afd/comparaison-mpeg4_low.mp4",
-            "server": "rtmp://streaming.ubicast.net/vod"
+            "filename": "comparaison-mpeg4_f14afd/media_low.mp4",
+            "server": "rtmp://streaming.local/vod"
         },
         {
             "displayable": true,
-            "filename": "http://videos.bench.ubicast.net/comparaison-mpeg4_f14afd/comparaison-mpeg4_high.webm"
+            "filename": "http://videos.local/comparaison-mpeg4_f14afd/media_high.webm"
         },
         {
-            "filename": "http://videos.bench.ubicast.net/comparaison-mpeg4_f14afd/comparaison-mpeg4_low.mp4"
+            "filename": "http://videos.local/comparaison-mpeg4_f14afd/media_low.mp4"
         }
     ],
     "speaker": {
-        "email": "Michel.Simatic@it-sudparis.eu",
-        "name": "Michel SIMATIC"
+        "email": "jean.dupond@university.local",
+        "name": "Jean DUPOND"
     },
     "title": "\u00c9l\u00e9ments d'architecture client-serveur",
     "version": "3.0",
@@ -137,12 +137,12 @@
             "is_edited": true,
             "publish_ids": [
                 {
-                    "name": "https://videossiteubicast.s3.amazonaws.com/2009-05-13_09-52-19backup.wmv",
+                    "name": "https://videos.local/2009-05-13_09-52-19backup.wmv",
                     "service": "url"
                 },
                 {
-                    "name": "/demo/tmsp/2009-05-13/michel_simatic",
-                    "service": "rambla"
+                    "name": "/my-university/2009-05-13/jean_dupond",
+                    "service": "ftp"
                 }
             ],
             "source_hash": "2009-05-13_09-52-19backup_6ae2ce.dv",
@@ -154,7 +154,7 @@
             "publish_ids": [
                 {
                     "name": "58049",
-                    "service": "botr"
+                    "service": "obj-stor"
                 }
             ]
         }

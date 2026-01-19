@@ -16,21 +16,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.9, 3.11]
+        python-version: [3.11, 3.13]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         pip install --upgrade pip setuptools
         pip install --no-cache-dir -e '.[dev]'
-    - name: Lint code with Python ${{ matrix.python-version }}
+    - name: Check code with Python ${{ matrix.python-version }}
       run: |
-        make lint
+        make lint_local
+        make deadcode_local
     - name: Test code with Python ${{ matrix.python-version }}
       run: |
-        make test
+        make test_local
