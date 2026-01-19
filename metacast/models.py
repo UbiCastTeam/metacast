@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 '''
 Models for MetaCast.
 '''
@@ -183,7 +181,7 @@ class Index(st.BaseModel):
         self.time = int(seconds * 1000)
 
     def set_time_from_timecode(self, timecode):
-        if len(timecode == 3):
+        if len(timecode) == 3:
             h, m, s = timecode
             ms = 0
         else:  # length is supposed to be 4
@@ -236,16 +234,11 @@ class License(st.BaseModel):
 
 
 class MetaCast(st.BaseModel):
-    TYPE_VIDEO = 'video'
-    TYPE_CHAPTERED = 'chaptered'
-    TYPE_WEBINAR = 'webinar'
-    TYPE_DUAL = 'dual'
-    METACAST_TYPES = (TYPE_VIDEO, TYPE_CHAPTERED, TYPE_WEBINAR, TYPE_DUAL)
-
-    TYPE_URL = 'url'
-    TYPE_BOTR = 'botr'
-    TYPE_RAMBLA = 'rambla'
-    PUBLISH_TYPES = (TYPE_URL, TYPE_BOTR, TYPE_RAMBLA)
+    LAYOUT_VIDEO = 'video'
+    LAYOUT_CHAPTERED = 'chaptered'
+    LAYOUT_WEBINAR = 'webinar'
+    LAYOUT_DUAL = 'dual'
+    LAYOUTS = (LAYOUT_VIDEO, LAYOUT_CHAPTERED, LAYOUT_WEBINAR, LAYOUT_DUAL)
 
     layout = st.TextField(is_repr=True, xml_attr=True)
     owner = st.TextField(xml_attr=True)

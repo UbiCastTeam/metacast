@@ -1,16 +1,15 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 '''
 MetaCast - Test of import/export functions.
 '''
-from io import BytesIO
 import datetime
 import tempfile
-import unittest
+
+import pytest
 
 from metacast import __version__
+from metacast import io as mcio
 from metacast import models
-from metacast.io import load_xml, dump_xml, load_json, dump_json, load_js, dump_js
+
 
 XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
 <metacast layout="video" owner="ABéêèàùöû" version="%(version)s">
@@ -22,7 +21,7 @@ XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
     <index>
       <time>452</time>
       <tags>
-        <tag type="pre-start"/>
+        <tag type="pre-start" />
       </tags>
     </index>
     <index>
@@ -72,8 +71,7 @@ XML_RESULT = '''<?xml version='1.0' encoding='utf-8'?>
       <publishid service="amazon">test</publishid>
     </video>
   </videos>
-</metacast>
-'''
+</metacast>'''  # noqa
 
 JSON_RESULT = '''{
     "creation": "%(creation)s",
@@ -145,7 +143,7 @@ JSON_RESULT = '''{
             }
         }
     ]
-}'''
+}'''  # noqa
 
 JS_RESULT = '''/* MetaCast - v%(version)s */
 /* https://github.com/UbiCastTeam/metacast */
@@ -219,120 +217,77 @@ var metadata = {
             }
         }
     ]
-};'''
+};'''  # noqa
 
 
-class TestFull(unittest.TestCase):
-    def setUp(self):
-        self.mc = models.MetaCast(title='test', layout='video', creation=datetime.datetime.now(), owner='ABéêèàùöû')
-        self.mc.speaker = models.Speaker()
-        self.mc.license = models.License(name='test', url='http://test')
-        self.mc.data = {"scorm": "2004"}
-        self.mc.tag_types = [
-            models.TagType(
-                slug='question',
-                categories=[models.TagTypeCategory(slug='imlost')])
-        ]
-        self.mc.indexes = [
-            models.Index(time=0),
-            models.Index(time=452, tags=[
-                models.Tag(type='pre-start'),
-            ]),
-            models.Index(time=9000, tags=[
-                models.Tag(
-                    type='question',
-                    content='{ "label": "Question 1", "type": { "slug": "question" }}',
-                    category=models.TagTypeCategory(slug='imlost')
-                ),
-            ]),
-        ]
-        self.mc.videos = [
-            models.Video(filename='media', publish_ids=[
-                models.PublishId(service='amazon', name='test')
-            ], transcoding=models.Transcoding(
-                service='zencoder', outputs=[
-                    models.Output(name='video_high.mp4', type='hd_video', width=None, height=720, profile=models.Profile(
-                        name='mp4_hd_ready',
-                        label='MP4 HD ready',
-                        cost=2.0,
-                        recipe=dict(audio_quality=3, keyframe_interval=25, hint=True, height=720, audio_normalize=True, audio_codec='aac', video_codec='h264', quality=4)
-                    ))
-                ])
-            )
-        ]
-
-    def test_dump_xml(self):
-        try:
-            expected = unicode(XML_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')), 'utf-8')
-        except NameError:
-            expected = XML_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
-        buf = BytesIO()
-        dump_xml(self.mc, buf)
-        result = buf.getvalue().decode('utf-8')
-        self.assertEqual(expected, result)
-
-    def test_dump_json(self):
-        buf = BytesIO()
-        dump_json(self.mc, buf)
-        result = buf.getvalue().decode('utf-8')
-        try:
-            expected = unicode(JSON_RESULT.replace(',', ', '), 'utf-8')  # python 2 add space after comas even on line end
-        except NameError:
-            expected = JSON_RESULT
-        self.assertEqual(expected % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')), result)
-
-    def test_dump_js(self):
-        buf = BytesIO()
-        dump_js(self.mc, buf)
-        result = buf.getvalue().decode('utf-8')
-        try:
-            expected = unicode(JS_RESULT.replace(',', ', '), 'utf-8')  # python 2 add space after comas even on line end
-        except NameError:
-            expected = JS_RESULT
-        self.assertEqual(expected % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S')), result)
-
-    def test_load_xml(self):
-        with tempfile.NamedTemporaryFile(mode='w') as fp:
-            text = XML_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
-            fp.write(text)
-            fp.flush()
-            path = fp.name
-            with open(path, 'rb') as fpr:
-                mc = load_xml(fpr)
-                fpr.close()
-            fp.close()
-        self.assertIsInstance(mc, models.MetaCast)
-
-    def test_load_json(self):
-        with tempfile.NamedTemporaryFile(mode='w') as fp:
-            text = JSON_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
-            try:
-                fp.write(text.encode('utf-8'))  # Python 2
-            except TypeError:
-                fp.write(text)
-            fp.flush()
-            path = fp.name
-            with open(path, 'rb') as fpr:
-                mc = load_json(fpr)
-                fpr.close()
-            fp.close()
-        self.assertIsInstance(mc, models.MetaCast)
-
-    def test_load_js(self):
-        with tempfile.NamedTemporaryFile(mode='w') as fp:
-            text = JS_RESULT % dict(version=__version__, creation=self.mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
-            try:
-                fp.write(text.encode('utf-8'))  # Python 2
-            except TypeError:
-                fp.write(text)
-            fp.flush()
-            path = fp.name
-            with open(path, 'rb') as fpr:
-                mc = load_js(fpr)
-                fpr.close()
-            fp.close()
-        self.assertIsInstance(mc, models.MetaCast)
+def test_dump_xml(mc):
+    expected = XML_RESULT % dict(version=__version__, creation=mc.creation.strftime('%Y-%m-%d %H:%M:%S'))
+    result = mcio.dump_xml(mc)
+    assert expected == result
 
 
-if __name__ == '__main__':
-    unittest.main()
+def test_dump_json(mc):
+    result = mcio.dump_json(mc)
+    expected = JSON_RESULT
+    assert expected % dict(version=__version__, creation=mc.creation.strftime('%Y-%m-%d %H:%M:%S')) == result
+
+
+def test_dump_js(mc):
+    result = mcio.dump_js(mc)
+    expected = JS_RESULT
+    assert expected % dict(version=__version__, creation=mc.creation.strftime('%Y-%m-%d %H:%M:%S')) == result
+
+
+def test_load_xml():
+    dt = datetime.datetime.now()
+    with tempfile.NamedTemporaryFile(mode='w') as fp:
+        text = XML_RESULT % dict(version=__version__, creation=dt.strftime('%Y-%m-%d %H:%M:%S'))
+        fp.write(text)
+        fp.flush()
+        path = fp.name
+        with open(path, 'r') as fo:
+            content = fo.read()
+    mc = mcio.load_xml(content)
+    assert isinstance(mc, models.MetaCast)
+
+
+def test_load_json():
+    dt = datetime.datetime.now()
+    with tempfile.NamedTemporaryFile(mode='w') as fp:
+        text = JSON_RESULT % dict(version=__version__, creation=dt.strftime('%Y-%m-%d %H:%M:%S'))
+        fp.write(text)
+        fp.flush()
+        path = fp.name
+        with open(path, 'r') as fo:
+            content = fo.read()
+    mc = mcio.load_json(content)
+    assert isinstance(mc, models.MetaCast)
+
+
+def test_load_js():
+    dt = datetime.datetime.now()
+    with tempfile.NamedTemporaryFile(mode='w') as fp:
+        text = JS_RESULT % dict(version=__version__, creation=dt.strftime('%Y-%m-%d %H:%M:%S'))
+        fp.write(text)
+        fp.flush()
+        path = fp.name
+        with open(path, 'r') as fo:
+            content = fo.read()
+    mc = mcio.load_js(content)
+    assert isinstance(mc, models.MetaCast)
+
+
+def test_dump(mc):
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.json') as fp:
+        path = fp.name
+        mcio.dump(mc, path)
+        with open(path, 'r') as fo:
+            content = fo.read()
+    assert content == mcio.dump_json(mc)
+
+
+def test_dump__invalid(mc):
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.nope') as fp:
+        path = fp.name
+        with pytest.raises(ValueError):
+            mcio.dump(mc, path)
