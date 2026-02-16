@@ -1,15 +1,15 @@
-/* MetaCast - v3.0 */
-/* https://github.com/UbiCastTeam/metacast */
-var metadata = {
-    "category": "Unsorted",
+{
+    "channel": "Unsorted",
     "company": {
         "name": "UBICAST"
     },
     "creation": "2015-09-22 11:59:04",
-    "data": "{\"scorm\": \"2004\"}",
+    "data": {
+        "scorm": "2004"
+    },
     "indexes": [
         {
-            "image": "capture_1442915939_413072.jpg",
+            "attachment": "images/capture_1442915939_413072.jpg",
             "keywords": [
                 "elearning",
                 "video",
@@ -17,16 +17,12 @@ var metadata = {
                 "solutions",
                 "pour"
             ],
-            "tags": [
-                {
-                    "type": "connected"
-                }
-            ],
+            "tag": "connected",
             "time": 4140,
             "title": "UBICAST"
         },
         {
-            "image": "capture_1442915951_396374.jpg",
+            "attachment": "images/capture_1442915951_396374.jpg",
             "keywords": [
                 "2015",
                 "\u00fcbicast",
@@ -36,7 +32,7 @@ var metadata = {
             "title": "Le contexte"
         },
         {
-            "image": "capture_1442915954_515914.jpg",
+            "attachment": "images/capture_1442915954_515914.jpg",
             "keywords": [
                 "2015",
                 "\u00fcbicast",
@@ -47,7 +43,7 @@ var metadata = {
             "time": 13706
         },
         {
-            "image": "capture_1442915958_763089.jpg",
+            "attachment": "images/capture_1442915958_763089.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "dubicast",
@@ -60,7 +56,7 @@ var metadata = {
             "time": 17957
         },
         {
-            "image": "capture_1442915964_314770.jpg",
+            "attachment": "images/capture_1442915964_314770.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "dubicast",
@@ -75,7 +71,7 @@ var metadata = {
             "time": 23503
         },
         {
-            "image": "capture_1442915968_463476.jpg",
+            "attachment": "images/capture_1442915968_463476.jpg",
             "keywords": [
                 "2015",
                 "\u00fcbicast",
@@ -86,7 +82,7 @@ var metadata = {
             "time": 27651
         },
         {
-            "image": "capture_1442915971_980534.jpg",
+            "attachment": "images/capture_1442915971_980534.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "mooc",
@@ -99,7 +95,7 @@ var metadata = {
             "time": 31170
         },
         {
-            "image": "capture_1442915979_814036.jpg",
+            "attachment": "images/capture_1442915979_814036.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "mooc",
@@ -115,7 +111,7 @@ var metadata = {
             "time": 39007
         },
         {
-            "image": "capture_1442916001_331531.jpg",
+            "attachment": "images/capture_1442916001_331531.jpg",
             "keywords": [
                 "ajout\u00e9es",
                 "150",
@@ -151,7 +147,7 @@ var metadata = {
             "time": 60530
         },
         {
-            "image": "capture_1442916009_481877.jpg",
+            "attachment": "images/capture_1442916009_481877.jpg",
             "keywords": [
                 "ajout\u00e9es",
                 "150",
@@ -191,7 +187,7 @@ var metadata = {
             "time": 68680
         },
         {
-            "image": "capture_1442916014_518819.jpg",
+            "attachment": "images/capture_1442916014_518819.jpg",
             "keywords": [
                 "courante",
                 "une",
@@ -201,7 +197,7 @@ var metadata = {
             "title": "Une pratique courante"
         },
         {
-            "image": "capture_1442916036_899172.jpg",
+            "attachment": "images/capture_1442916036_899172.jpg",
             "keywords": [
                 "lpsum",
                 "ipsum",
@@ -217,7 +213,7 @@ var metadata = {
             "title": "Vos pr\u00e9sentations en vid\u00e9o"
         },
         {
-            "image": "capture_1442916046_506235.jpg",
+            "attachment": "images/capture_1442916046_506235.jpg",
             "keywords": [
                 "ipsum",
                 "pr\u00e9sentations",
@@ -231,7 +227,7 @@ var metadata = {
             "time": 105696
         },
         {
-            "image": "capture_1442916051_299887.jpg",
+            "attachment": "images/capture_1442916051_299887.jpg",
             "keywords": [
                 "ipsum",
                 "pr\u00e9sentations",
@@ -251,7 +247,7 @@ var metadata = {
             "time": 110502
         },
         {
-            "image": "capture_1442916052_383843.jpg",
+            "attachment": "images/capture_1442916052_383843.jpg",
             "keywords": [
                 "ipsum",
                 "lur",
@@ -278,7 +274,7 @@ var metadata = {
             "time": 111580
         },
         {
-            "image": "capture_1442916057_900985.jpg",
+            "attachment": "images/capture_1442916057_900985.jpg",
             "keywords": [
                 "analyser",
                 "vie",
@@ -298,7 +294,7 @@ var metadata = {
             "title": "Le cycle de vie ccmplet d\u2019une vid\u00e9o"
         },
         {
-            "image": "capture_1442916071_084187.jpg",
+            "attachment": "images/capture_1442916071_084187.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "toutenun",
@@ -314,7 +310,7 @@ var metadata = {
             "title": "Le Studio"
         },
         {
-            "image": "capture_1442916082_750768.jpg",
+            "attachment": "images/capture_1442916082_750768.jpg",
             "keywords": [
                 "comment",
                 "marche",
@@ -325,7 +321,7 @@ var metadata = {
             "title": "Comment \u00e7a marche \u2019?"
         },
         {
-            "image": "capture_1442916093_385308.jpg",
+            "attachment": "images/capture_1442916093_385308.jpg",
             "keywords": [
                 "comment",
                 "marche",
@@ -335,7 +331,7 @@ var metadata = {
             "time": 152573
         },
         {
-            "image": "capture_1442916096_385888.jpg",
+            "attachment": "images/capture_1442916096_385888.jpg",
             "keywords": [
                 "comment",
                 "marche",
@@ -345,7 +341,7 @@ var metadata = {
             "time": 155578
         },
         {
-            "image": "capture_1442916099_386065.jpg",
+            "attachment": "images/capture_1442916099_386065.jpg",
             "keywords": [
                 "comment",
                 "marche",
@@ -355,7 +351,7 @@ var metadata = {
             "time": 158580
         },
         {
-            "image": "capture_1442916101_502650.jpg",
+            "attachment": "images/capture_1442916101_502650.jpg",
             "keywords": [
                 "comment",
                 "\u00fcbicast",
@@ -369,7 +365,7 @@ var metadata = {
             "time": 160697
         },
         {
-            "image": "capture_1442916106_586664.jpg",
+            "attachment": "images/capture_1442916106_586664.jpg",
             "keywords": [
                 "comment",
                 "marche",
@@ -385,7 +381,7 @@ var metadata = {
             "time": 165775
         },
         {
-            "image": "capture_1442916108_669733.jpg",
+            "attachment": "images/capture_1442916108_669733.jpg",
             "keywords": [
                 "comment",
                 "marche",
@@ -404,7 +400,7 @@ var metadata = {
             "time": 167863
         },
         {
-            "image": "capture_1442916111_301866.jpg",
+            "attachment": "images/capture_1442916111_301866.jpg",
             "keywords": [
                 "comment",
                 "marche",
@@ -423,7 +419,7 @@ var metadata = {
             "time": 170491
         },
         {
-            "image": "capture_1442916117_452382.jpg",
+            "attachment": "images/capture_1442916117_452382.jpg",
             "keywords": [
                 "par",
                 "\u00fcbdcast",
@@ -439,7 +435,7 @@ var metadata = {
             "title": "Analyse du support"
         },
         {
-            "image": "capture_1442916126_454654.jpg",
+            "attachment": "images/capture_1442916126_454654.jpg",
             "keywords": [
                 "par",
                 "aaav",
@@ -466,7 +462,7 @@ var metadata = {
             "time": 185645
         },
         {
-            "image": "capture_1442916134_769958.jpg",
+            "attachment": "images/capture_1442916134_769958.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "exp\u00e9rience",
@@ -481,7 +477,7 @@ var metadata = {
             "title": "Normalisation audio"
         },
         {
-            "image": "capture_1442916148_320084.jpg",
+            "attachment": "images/capture_1442916148_320084.jpg",
             "keywords": [
                 "2015",
                 "\u00fcbicast",
@@ -492,7 +488,7 @@ var metadata = {
             "title": "Suivi autcmatique"
         },
         {
-            "image": "capture_1442916164_820445.jpg",
+            "attachment": "images/capture_1442916164_820445.jpg",
             "keywords": [
                 "vuihucu",
                 "aaav",
@@ -504,7 +500,7 @@ var metadata = {
             "time": 224015
         },
         {
-            "image": "capture_1442916166_670726.jpg",
+            "attachment": "images/capture_1442916166_670726.jpg",
             "keywords": [
                 "une",
                 "economique",
@@ -527,7 +523,7 @@ var metadata = {
             "time": 225868
         },
         {
-            "image": "capture_1442916171_220860.jpg",
+            "attachment": "images/capture_1442916171_220860.jpg",
             "keywords": [
                 "2015",
                 "\u00fcbicast",
@@ -538,7 +534,7 @@ var metadata = {
             "title": "Production dynamique"
         },
         {
-            "image": "capture_1442916177_988363.jpg",
+            "attachment": "images/capture_1442916177_988363.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "plein",
@@ -555,7 +551,7 @@ var metadata = {
             "time": 237184
         },
         {
-            "image": "capture_1442916181_054453.jpg",
+            "attachment": "images/capture_1442916181_054453.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "plein",
@@ -575,7 +571,7 @@ var metadata = {
             "time": 240250
         },
         {
-            "image": "capture_1442916188_938336.jpg",
+            "attachment": "images/capture_1442916188_938336.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "plein",
@@ -599,7 +595,7 @@ var metadata = {
             "time": 248138
         },
         {
-            "image": "capture_1442916199_405141.jpg",
+            "attachment": "images/capture_1442916199_405141.jpg",
             "keywords": [
                 "videodata",
                 "\u00fcbicast",
@@ -622,7 +618,7 @@ var metadata = {
             "title": "Personnalisaticn"
         },
         {
-            "image": "capture_1442916223_072280.jpg",
+            "attachment": "images/capture_1442916223_072280.jpg",
             "keywords": [
                 "2015",
                 "\u00fcbicast",
@@ -632,7 +628,7 @@ var metadata = {
             "time": 282263
         },
         {
-            "image": "capture_1442916228_672892.jpg",
+            "attachment": "images/capture_1442916228_672892.jpg",
             "keywords": [
                 "00100100250",
                 "\u00fbno",
@@ -643,7 +639,7 @@ var metadata = {
             "time": 287866
         },
         {
-            "image": "capture_1442916232_473933.jpg",
+            "attachment": "images/capture_1442916232_473933.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "wubicasl",
@@ -652,15 +648,11 @@ var metadata = {
                 "6050",
                 "quo"
             ],
-            "tags": [
-                {
-                    "type": "video_begin"
-                }
-            ],
+            "tag": "video_begin",
             "time": 291665
         },
         {
-            "image": "capture_1442916239_139638.jpg",
+            "attachment": "images/capture_1442916239_139638.jpg",
             "keywords": [
                 "2015",
                 "\u00fbno",
@@ -671,7 +663,7 @@ var metadata = {
             "time": 298332
         },
         {
-            "image": "capture_1442916287_075765.jpg",
+            "attachment": "images/capture_1442916287_075765.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "podcast",
@@ -689,16 +681,12 @@ var metadata = {
                 "\u00eftuhef",
                 "scorm"
             ],
-            "tags": [
-                {
-                    "type": "video_end"
-                }
-            ],
+            "tag": "video_end",
             "time": 340252,
             "title": "Partager ses contenus"
         },
         {
-            "image": "capture_1442916291_825759.jpg",
+            "attachment": "images/capture_1442916291_825759.jpg",
             "keywords": [
                 "2015",
                 "\u00fcbicast",
@@ -709,7 +697,7 @@ var metadata = {
             "title": "MediaServer"
         },
         {
-            "image": "capture_1442916292_392055.jpg",
+            "attachment": "images/capture_1442916292_392055.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "podcast",
@@ -730,7 +718,7 @@ var metadata = {
             "time": 351583
         },
         {
-            "image": "capture_1442916302_511309.jpg",
+            "attachment": "images/capture_1442916302_511309.jpg",
             "keywords": [
                 "2015",
                 "\u00fcbicast",
@@ -741,7 +729,7 @@ var metadata = {
             "title": "MediaServer"
         },
         {
-            "image": "capture_1442916309_375310.jpg",
+            "attachment": "images/capture_1442916309_375310.jpg",
             "keywords": [
                 "tous",
                 "portail",
@@ -754,7 +742,7 @@ var metadata = {
             "time": 365842
         },
         {
-            "image": "capture_1442916354_076979.jpg",
+            "attachment": "images/capture_1442916354_076979.jpg",
             "keywords": [
                 "prcpos",
                 "tous",
@@ -769,7 +757,7 @@ var metadata = {
             "time": 374355
         },
         {
-            "image": "capture_1442916357_143752.jpg",
+            "attachment": "images/capture_1442916357_143752.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "aaav",
@@ -790,7 +778,7 @@ var metadata = {
             "time": 377419
         },
         {
-            "image": "capture_1442916362_227261.jpg",
+            "attachment": "images/capture_1442916362_227261.jpg",
             "keywords": [
                 "auteurs",
                 "cl\u00e9s",
@@ -838,7 +826,7 @@ var metadata = {
             "title": "Fonctionnalit\u00e9s du portail"
         },
         {
-            "image": "capture_1442916367_227556.jpg",
+            "attachment": "images/capture_1442916367_227556.jpg",
             "keywords": [
                 "auteurs",
                 "cl\u00e9s",
@@ -867,7 +855,7 @@ var metadata = {
             "time": 387497
         },
         {
-            "image": "capture_1442916373_894562.jpg",
+            "attachment": "images/capture_1442916373_894562.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "auteurs",
@@ -917,7 +905,7 @@ var metadata = {
             "time": 394175
         },
         {
-            "image": "capture_1442916380_662377.jpg",
+            "attachment": "images/capture_1442916380_662377.jpg",
             "keywords": [
                 "\u00fcbicast",
                 "auteurs",
@@ -964,7 +952,7 @@ var metadata = {
             "time": 400943
         },
         {
-            "image": "capture_1442916390_695355.jpg",
+            "attachment": "images/capture_1442916390_695355.jpg",
             "keywords": [
                 "pi\u00e8ces",
                 "auteurs",
@@ -1016,7 +1004,7 @@ var metadata = {
             "time": 410967
         },
         {
-            "image": "capture_1442916405_846953.jpg",
+            "attachment": "images/capture_1442916405_846953.jpg",
             "keywords": [
                 "cas",
                 "auteurs",
@@ -1075,7 +1063,7 @@ var metadata = {
             "time": 426127
         },
         {
-            "image": "capture_1442916415_512967.jpg",
+            "attachment": "images/capture_1442916415_512967.jpg",
             "keywords": [
                 "imam",
                 "cwaw",
@@ -1149,7 +1137,7 @@ var metadata = {
             "title": "clients heureux"
         },
         {
-            "image": "capture_1442916425_829467.jpg",
+            "attachment": "images/capture_1442916425_829467.jpg",
             "keywords": [
                 "2015",
                 "\u00fcbicast",
@@ -1159,7 +1147,7 @@ var metadata = {
             "title": "En entreprise"
         },
         {
-            "image": "capture_1442916430_663444.jpg",
+            "attachment": "images/capture_1442916430_663444.jpg",
             "keywords": [
                 "webcast",
                 "\u00fcbicast",
@@ -1170,14 +1158,14 @@ var metadata = {
             "time": 450936
         },
         {
-            "image": "capture_1442916433_830162.jpg",
+            "attachment": "images/capture_1442916433_830162.jpg",
             "keywords": [
                 "entreprise"
             ],
             "time": 454102
         },
         {
-            "image": "capture_1442916437_585572.jpg",
+            "attachment": "images/capture_1442916437_585572.jpg",
             "keywords": [
                 "distance",
                 "vid\u00e9os",
@@ -1199,53 +1187,17 @@ var metadata = {
     ],
     "language": "fr",
     "location": "easycast-a29",
+    "markers": "transcoding:mediaserver",
     "owner": "common",
+    "resources": [
+        {
+            "service": "amazon",
+            "uri": "ubicast-solution-corporate_1e4e"
+        }
+    ],
     "speaker": {
         "name": "CTO"
     },
     "title": "UBICAST SOLUTION CORPORATE",
-    "version": "3.0",
-    "videos": [
-        {
-            "creation_date": "2015-09-22 12:39:54",
-            "duration": 459965,
-            "file_hash": "vga.mkv_2015922123954",
-            "filename": "vga.mkv",
-            "height": 720,
-            "info": "video_codec=mjpeg;video_width=1280;video_height=720;video_framerate=25;",
-            "is_vga": true,
-            "width": 1280
-        },
-        {
-            "creation_date": "2015-09-22 14:15:35",
-            "duration": 460000,
-            "file_hash": "autocam_5f4f.mkv_2015922141535_131670189",
-            "filename": "autocam_5f4f.mkv",
-            "height": 504,
-            "is_autocam": true,
-            "is_main": true,
-            "source_hash": "original.mkv_2015922123954",
-            "width": 448
-        },
-        {
-            "creation_date": "2015-09-22 14:58:46",
-            "duration": 470770,
-            "filename": "transcoded_1e4e0000fb64.mp4",
-            "height": 720,
-            "is_web2pod": true,
-            "logo_hash": "85de76efc54e81d9c0cfb360ebfd3245",
-            "logo_position": "tl",
-            "publish_ids": [
-                {
-                    "name": "ubicast-solution-corporate_1e4e",
-                    "service": "amazon"
-                }
-            ],
-            "source_hash": "autocam_5f4f.mkv_2015922141535_131670189",
-            "transcoding": {
-                "service": "mediaserver"
-            },
-            "width": 1280
-        }
-    ]
-};
+    "version": "4.0"
+}

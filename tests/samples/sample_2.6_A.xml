@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <metacast version="2.6" type="webinar" language="fr">
-  <creation>Wed May 13 09:52:19 2009</creation>
+  <creation>2009-05-13_09-52-19</creation>
   <title>Éléments d'architecture client-serveur</title>
   <speaker email="jean.dupond@university.local">Jean DUPOND</speaker>
   <company url="http://www.university.local/">My University</company>
@@ -38,7 +38,7 @@
   <resources>
     <resource service="amazon" quality="high" downloadable="1" displayable="1">
       <filename>comparaison-mpeg4_f14afd/media_low.mp4</filename>
-      <server>rtmp://streaming.local/vod</server>
+      <server>rtmp://streaming.local/vod/</server>
     </resource>
     <resource quality="high" displayable="1">
       <filename>http://videos.local/comparaison-mpeg4_f14afd/media_high.webm</filename>
@@ -91,6 +91,20 @@
       <image>capture36.jpg</image>
     </index>
     <index>
+      <!--00:32:10.500-->
+      <time>1930500</time>
+      <tags>
+        <tag type="question">
+          <content>{"label": "Question 1", "poster": "Mr Test"}</content>
+          <category>
+            <tagtypecategory>
+              <slug>imlost</slug>
+            </tagtypecategory>
+          </category>
+        </tag>
+      </tags>
+    </index>
+    <index>
       <!--00:45:42.000-->
       <time>2742000</time>
       <tags>
@@ -108,6 +122,15 @@
     <attachment>
       <filename>autre.pdf</filename>
       <title>Autre fichier de test</title>
+    </attachment>
+    <attachment>
+      <filename>playersettings/logo.png</filename>
+      <title>Player logo</title>
+    </attachment>
+    <attachment>
+      <filename>subtitles/sub-eng.vtt</filename>
+      <title>English subtitles</title>
+      <description>eng</description>
     </attachment>
   </attachments>
   <photos>

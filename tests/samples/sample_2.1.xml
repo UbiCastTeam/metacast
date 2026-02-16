@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metacast version="2.1" type="webinar" language="fr">
   <title>Éléments d'architecture client-serveur</title>
-  <speaker email="jean.dupond@university.local">Jean DUPOND</speaker>
+  <speaker email="jean.dupond@university.local" id="j.dupond">Jean DUPOND</speaker>
   <company url="http://www.university.local/">My University</company>
   <description>Les différentes architectures logicielles pour traiter le flux de requêtes arrivant au niveau d'un serveur</description>
   <creation>Wed May 13 09:52:19 2009</creation>
@@ -11,15 +11,16 @@
   <videos>
     <video original="1">
       <filename>2009-05-13_09-52-19backup.dv</filename>
+      <creation_date>Wed May 13 09:52:19 2009</creation_date>
     </video>
     <video edited="1">
       <filename>2009-05-13_09-52-19backup.wmv</filename>
-      <publishid service="url">https://videos.local/2009-05-13_09-52-19backup.wmv</publishid>
-      <publishid service="ftp">/my-university/2009-05-13/jean_dupond</publishid>
+      <publishid type="url">https://videos.local/2009-05-13_09-52-19backup.wmv</publishid>
+      <publishid type="ftp">/my-university/2009-05-13/jean_dupond</publishid>
     </video>
     <video edited="1">
       <filename>2009-05-13_09-52-19backup.mp4</filename>
-      <publishid service="obj-stor">58049</publishid>
+      <publishid type="obj-stor">58049</publishid>
     </video>
   </videos>
   <chapters>

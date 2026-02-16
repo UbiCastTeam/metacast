@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metacast language="fr" layout="webinar" version="4.0">
+  <channel>Cours de réseau</channel>
+  <creation>2009-05-13 09:52:19</creation>
+  <description>Les différentes architectures logicielles pour traiter le flux de requêtes arrivant au niveau d'un serveur</description>
+  <keywords>réseau, client, serveur, architecture</keywords>
+  <title>Éléments d'architecture client-serveur</title>
+  <company url="http://www.university.local/">My University</company>
+  <license url="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/">Creative Commons By-NC-ND</license>
+  <speaker email="jean.dupond@university.local" identifier="j.dupond">Jean DUPOND</speaker>
+  <indexes>
+    <index>
+      <attachment>images/capture1.jpg</attachment>
+      <content>Présentation du cours, plan du diaporama</content>
+      <title>Début du cours</title>
+    </index>
+    <index>
+      <attachment>images/capture3.jpg</attachment>
+      <content>Description, objectifs, les communications</content>
+      <time>69000</time>
+      <title>1. Introduction</title>
+    </index>
+    <index>
+      <attachment>images/capture4.jpg</attachment>
+      <time>103000</time>
+      <title>1.1 Définition d'une architecture client/serveur</title>
+    </index>
+    <index>
+      <attachment>images/capture8.jpg</attachment>
+      <content>Principe, avantages et inconvénients d'un serveur mono-tâche</content>
+      <time>711000</time>
+      <title>2. Serveur mono-tâche</title>
+    </index>
+    <index>
+      <attachment>images/capture12.jpg</attachment>
+      <content>Principe, avantages et inconvénients d'un serveur ayant autant de tâches que de clients</content>
+      <time>987000</time>
+      <title>3. Serveur avec autant de tâches que de clients</title>
+    </index>
+    <index>
+      <attachment>images/capture36.jpg</attachment>
+      <content>Principe, avantages et inconvénients d'un serveur ayant un nombre limité de tâches</content>
+      <time>1763000</time>
+      <title>4. Serveur avec N tâches gérant tous les clients</title>
+    </index>
+    <index>
+      <time>2742000</time>
+    </index>
+  </indexes>
+  <resources>
+    <resource service="url">https://videos.local/2009-05-13_09-52-19backup.wmv</resource>
+    <resource service="ftp">/my-university/2009-05-13/jean_dupond</resource>
+    <resource service="obj-stor">58049</resource>
+  </resources>
+</metacast>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metacast language="fr" layout="webinar" version="4.0">
+  <channel>Cours de réseau</channel>
+  <creation>2009-05-13 09:52:19</creation>
+  <description>Les différentes architectures logicielles pour traiter le flux de requêtes arrivant au niveau d'un serveur</description>
+  <keywords>réseau, client, serveur, architecture</keywords>
+  <title>Éléments d'architecture client-serveur</title>
+  <company url="http://www.university.local/">My University</company>
+  <license url="http://creativecommons.org/licenses/by-nc-nd/2.0/fr/">Creative Commons By-NC-ND</license>
+  <speaker email="jean.dupond@university.local">Jean DUPOND</speaker>
+  <indexes>
+    <index>
+      <attachment>images/capture1.jpg</attachment>
+      <content>Présentation du cours, plan du diaporama</content>
+      <title>Début du cours</title>
+    </index>
+    <index>
+      <attachment>test.pdf</attachment>
+      <content>Description du fichier</content>
+      <keywords>normal, parution des évènements</keywords>
+      <title>Fichier de test</title>
+    </index>
+    <index>
+      <attachment>autre.pdf</attachment>
+      <title>Autre fichier de test</title>
+    </index>
+    <index>
+      <attachment>images/capture3.jpg</attachment>
+      <content>Description, objectifs, les communications</content>
+      <keywords>introduction, test, autre</keywords>
+      <time>69000</time>
+      <title>1. Introduction</title>
+    </index>
+    <index>
+      <attachment>images/capture4.jpg</attachment>
+      <time>103000</time>
+      <title>1.1 Définition d'une architecture client/serveur</title>
+    </index>
+    <index>
+      <attachment>images/capture8.jpg</attachment>
+      <content>Principe, avantages et inconvénients d'un serveur mono-tâche</content>
+      <time>711000</time>
+      <title>2. Serveur mono-tâche</title>
+    </index>
+    <index>
+      <attachment>images/capture12.jpg</attachment>
+      <content>Principe, avantages et inconvénients d'un serveur ayant autant de tâches que de clients</content>
+      <time>987000</time>
+      <title>3. Serveur avec autant de tâches que de clients</title>
+    </index>
+    <index>
+      <attachment>images/capture36.jpg</attachment>
+      <content>Principe, avantages et inconvénients d'un serveur ayant un nombre limité de tâches</content>
+      <time>1763000</time>
+      <title>4. Serveur avec N tâches gérant tous les clients</title>
+    </index>
+    <index>
+      <data>{"label": "Question 1", "poster": "Mr Test"}</data>
+      <tag>question:imlost</tag>
+      <time>1930500</time>
+    </index>
+    <index>
+      <tag>stop</tag>
+      <time>2742000</time>
+    </index>
+  </indexes>
+  <photos>
+    <photo>
+      <attachment>photos/test.jpg</attachment>
+      <description>Description de la photo</description>
+      <keywords>photo, test</keywords>
+      <title>Photo de test</title>
+    </photo>
+    <photo>
+      <attachment>photos/autre.png</attachment>
+      <title>Autre photo de test</title>
+    </photo>
+  </photos>
+  <resources>
+    <resource displayable="1" downloadable="1" quality="high" service="amazon">rtmp://streaming.local/vod/comparaison-mpeg4_f14afd/media_low.mp4</resource>
+    <resource displayable="1" quality="high">http://videos.local/comparaison-mpeg4_f14afd/media_high.webm</resource>
+    <resource>http://videos.local/comparaison-mpeg4_f14afd/media_low.mp4</resource>
+    <resource name="logo" service="player">playersettings/logo.png</resource>
+    <resource service="url">https://videos.local/2009-05-13_09-52-19backup.wmv</resource>
+    <resource service="ftp">/my-university/2009-05-13/jean_dupond</resource>
+    <resource service="obj-stor">58049</resource>
+  </resources>
+  <subtitles>
+    <subtitle>
+      <attachment>subtitles/sub-eng.vtt</attachment>
+      <label>English subtitles</label>
+      <language>eng</language>
+    </subtitle>
+  </subtitles>
+</metacast>

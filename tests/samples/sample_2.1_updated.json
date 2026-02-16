@@ -1,0 +1,77 @@
+{
+    "channel": "Cours de r\u00e9seau",
+    "company": {
+        "name": "My University",
+        "url": "http://www.university.local/"
+    },
+    "creation": "2009-05-13 09:52:19",
+    "description": "Les diff\u00e9rentes architectures logicielles pour traiter le flux de requ\u00eates arrivant au niveau d'un serveur",
+    "indexes": [
+        {
+            "attachment": "images/capture1.jpg",
+            "content": "Pr\u00e9sentation du cours, plan du diaporama",
+            "title": "D\u00e9but du cours"
+        },
+        {
+            "attachment": "images/capture3.jpg",
+            "content": "Description, objectifs, les communications",
+            "time": 69000,
+            "title": "1. Introduction"
+        },
+        {
+            "attachment": "images/capture4.jpg",
+            "time": 103000,
+            "title": "1.1 D\u00e9finition d'une architecture client/serveur"
+        },
+        {
+            "attachment": "images/capture8.jpg",
+            "content": "Principe, avantages et inconv\u00e9nients d'un serveur mono-t\u00e2che",
+            "time": 711000,
+            "title": "2. Serveur mono-t\u00e2che"
+        },
+        {
+            "attachment": "images/capture12.jpg",
+            "content": "Principe, avantages et inconv\u00e9nients d'un serveur ayant autant de t\u00e2ches que de clients",
+            "time": 987000,
+            "title": "3. Serveur avec autant de t\u00e2ches que de clients"
+        },
+        {
+            "attachment": "images/capture36.jpg",
+            "content": "Principe, avantages et inconv\u00e9nients d'un serveur ayant un nombre limit\u00e9 de t\u00e2ches",
+            "time": 1763000,
+            "title": "4. Serveur avec N t\u00e2ches g\u00e9rant tous les clients"
+        },
+        {
+            "time": 2742000
+        }
+    ],
+    "keywords": [
+        "r\u00e9seau",
+        "client",
+        "serveur",
+        "architecture"
+    ],
+    "language": "fr",
+    "license": {
+        "name": "Creative Commons By-NC-ND",
+        "url": "http://creativecommons.org/licenses/by-nc-nd/2.0/fr/"
+    },
+    "resources": [
+        {
+            "uri": "https://videos.local/2009-05-13_09-52-19backup.wmv"
+        },
+        {
+            "uri": "/my-university/2009-05-13/jean_dupond"
+        },
+        {
+            "uri": "58049"
+        }
+    ],
+    "speaker": {
+        "email": "jean.dupond@university.local",
+        "identifier": "j.dupond",
+        "name": "Jean DUPOND"
+    },
+    "title": "\u00c9l\u00e9ments d'architecture client-serveur",
+    "version": "4.0"
+}

@@ -4,46 +4,46 @@
         "name": "My University",
         "url": "http://www.university.local/"
     },
-    "creation": "2009-05-13 09:52:19",
+    "creation": "Wed May 13 09:52:19 2009",
     "description": "Les diff\u00e9rentes architectures logicielles pour traiter le flux de requ\u00eates arrivant au niveau d'un serveur",
-    "indexes": [
+    "chapters": [
         {
             "description": "Pr\u00e9sentation du cours, plan du diaporama",
             "image": "capture1.jpg",
-            "time": 0,
+            "timecode": "00:00:00",
             "title": "D\u00e9but du cours"
         },
         {
             "description": "Description, objectifs, les communications",
             "image": "capture3.jpg",
-            "time": 69000,
+            "timecode": "00:01:09",
             "title": "1. Introduction"
         },
         {
             "image": "capture4.jpg",
-            "time": 103000,
+            "timecode": "00:01:43",
             "title": "1.1 D\u00e9finition d'une architecture client/serveur"
         },
         {
             "description": "Principe, avantages et inconv\u00e9nients d'un serveur mono-t\u00e2che",
             "image": "capture8.jpg",
-            "time": 711000,
+            "timecode": "00:11:51",
             "title": "2. Serveur mono-t\u00e2che"
         },
         {
             "description": "Principe, avantages et inconv\u00e9nients d'un serveur ayant autant de t\u00e2ches que de clients",
             "image": "capture12.jpg",
-            "time": 987000,
+            "timecode": "00:16:27",
             "title": "3. Serveur avec autant de t\u00e2ches que de clients"
         },
         {
             "description": "Principe, avantages et inconv\u00e9nients d'un serveur ayant un nombre limit\u00e9 de t\u00e2ches",
             "image": "capture36.jpg",
-            "time": 1763000,
+            "timecode": "00:29:23",
             "title": "4. Serveur avec N t\u00e2ches g\u00e9rant tous les clients"
         },
         {
-            "time": 2742000
+            "timecode": "00:45:42"
         }
     ],
     "keywords": [
@@ -59,13 +59,15 @@
     },
     "speaker": {
         "email": "jean.dupond@university.local",
+        "id": "j.dupond",
         "name": "Jean DUPOND"
     },
     "title": "\u00c9l\u00e9ments d'architecture client-serveur",
-    "version": "3.0",
+    "version": "2.1",
     "videos": [
         {
             "filename": "2009-05-13_09-52-19backup.dv",
+            "creation_date": "Wed May 13 09:52:19 2009",
             "is_original": true
         },
         {
@@ -74,11 +76,11 @@
             "publish_ids": [
                 {
                     "name": "https://videos.local/2009-05-13_09-52-19backup.wmv",
-                    "service": "url"
+                    "type": "url"
                 },
                 {
                     "name": "/my-university/2009-05-13/jean_dupond",
-                    "service": "ftp"
+                    "type": "ftp"
                 }
             ]
         },
@@ -88,7 +90,7 @@
             "publish_ids": [
                 {
                     "name": "58049",
-                    "service": "obj-stor"
+                    "type": "obj-stor"
                 }
             ]
         }
