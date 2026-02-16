@@ -154,8 +154,8 @@ class DatetimeField(BaseField):
         return datetime.datetime(d.year, d.month, d.day, d.hour, d.minute, d.second)
 
     def to_any(self):
-        if self.value != self.initial:
-            return self.value.strftime('%Y-%m-%d %H:%M:%S') if self.value else None
+        if self.value != self.initial and self.value:
+            return self.value.strftime('%Y-%m-%d %H:%M:%S')
 
     def from_any(self, data):
         if data is None:
@@ -174,18 +174,30 @@ class JSONField(BaseField):
 
     def __init__(self, *args, **kwargs):
         if kwargs.get('initial') is None:
-            kwargs['initial'] = dict()
+            kwargs['initial'] = dict
         super().__init__(*args, **kwargs)
 
-    def to_any(self):
-        if self.value != self.initial:
-            return json.dumps(self.value, sort_keys=True) if self.value else None
+    def to_json(self):
+        if self.value != self.initial and self.value:
+            if not isinstance(self.value, dict):
+                raise ValueError('Invalid value for JSONField.')
+            return self.value
+
+    def to_xml(self):
+        if self.value != self.initial and self.value:
+            if not isinstance(self.value, dict):
+                raise ValueError('Invalid value for JSONField.')
+            return json.dumps(self.value, sort_keys=True)
 
     def from_any(self, data):
         if data is None:
             self.set_initial()
-        else:
+        elif isinstance(data, str):
             self.value = json.loads(data)
+        elif isinstance(data, dict):
+            self.value = data
+        else:
+            raise ValueError('Invalid data for JSONField.')
 
 
 class ListField(BaseField):
@@ -200,8 +212,8 @@ class ListField(BaseField):
             return self.value
 
     def to_xml(self):
-        if self.value != self.initial:
-            return ', '.join(self.value) if self.value else None
+        if self.value != self.initial and self.value:
+            return ', '.join(self.value)
 
     def from_xml(self, data):
         if data is None:
@@ -315,7 +327,7 @@ class ManyModelField(SubModelField):
 
 
 class BaseModel:
-    ORDER = {None: 0, True: 1, False: 2}  # used to set order of appearance in exports
+    ORDER = {None: 0, True: 1, False: 2}  # Used to set order of appearance in exports
 
     def __init__(self, *args, **kwargs):
         if args:
@@ -400,7 +412,7 @@ class BaseModel:
         new = cls()
         if data:
             if not isinstance(data, dict):
-                raise Exception('Invalid data given to function from_json.')
+                raise ValueError('Invalid data given to function "from_json".')
             for field in new.fields:
                 if field.name in data:
                     field.from_json(data[field.name])

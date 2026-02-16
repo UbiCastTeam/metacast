@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metacast language="fr" layout="dual" owner="common" version="4.0">
+  <channel>Unsorted</channel>
+  <creation>2015-09-22 11:59:04</creation>
+  <data>{"scorm": "2004"}</data>
+  <keywords>2015, ubicast, video</keywords>
+  <location>easycast-a29</location>
+  <markers>transcoding:mediaserver</markers>
+  <title>UBICAST SOLUTION CORPORATE</title>
+  <company>UBICAST</company>
+  <speaker>CTO</speaker>
+  <indexes>
+    <index>
+      <attachment>images/capture_1442915939_413072.jpg</attachment>
+      <keywords>elearning, video, ubicast, solutions, pour</keywords>
+      <tag>connected</tag>
+      <time>4140</time>
+      <title>UBICAST</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442915951_396374.jpg</attachment>
+      <keywords>2015, übicast, contexte</keywords>
+      <time>10590</time>
+      <title>Le contexte</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442915954_515914.jpg</attachment>
+      <keywords>2015, übicast, youtube, contexte, création</keywords>
+      <time>13706</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442915958_763089.jpg</attachment>
+      <keywords>übicast, dubicast, youtube, création, ryou, 2015, contexte</keywords>
+      <time>17957</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442915964_314770.jpg</attachment>
+      <keywords>übicast, dubicast, soüvbhî, youtube, création, ryou, 2015, former, contexte</keywords>
+      <time>23503</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442915968_463476.jpg</attachment>
+      <keywords>2015, übicast, mooc, coursera, création</keywords>
+      <time>27651</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442915971_980534.jpg</attachment>
+      <keywords>übicast, mooc, coursera, création, 2015, 2014, 2013</keywords>
+      <time>31170</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442915979_814036.jpg</attachment>
+      <keywords>übicast, mooc, mpfóyé, 0230, coursera, création, loyés, 2015, 2014, 2013</keywords>
+      <time>39007</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916001_331531.jpg</attachment>
+      <keywords>ajoutées, 150, 607, übicast, 310, explose, employés, pldn, mooc, création, 1110, 509, 2015, 2014, heures, 300, tempo, coursera, par, 109, 914, 225, minute, 0415, mpfóyé, youtube, 2013, 511, 513, 512</keywords>
+      <time>60530</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916009_481877.jpg</attachment>
+      <keywords>ajoutées, 150, 607, übicast, 310, explose, vidéo, 2013, mooc, est, création, 1110, 509, 2015, 2014, heures, vecteur, dinformation, 0230, 300, coursera, par, 109, 914, 225, meilleur, minute, 0415, mpfóyé, youtube, loyés, 511, 513, 512</keywords>
+      <time>68680</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916014_518819.jpg</attachment>
+      <keywords>courante, une, pratique</keywords>
+      <time>73712</time>
+      <title>Une pratique courante</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916036_899172.jpg</attachment>
+      <keywords>lpsum, ipsum, présentations, lurcm, dolor, vos, vidéo, titre, lorem</keywords>
+      <time>96088</time>
+      <title>Vos présentations en vidéo</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916046_506235.jpg</attachment>
+      <keywords>ipsum, présentations, dolor, ehilliiiilui, vos, vidéo, titre, lorem</keywords>
+      <time>105696</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916051_299887.jpg</attachment>
+      <keywords>ipsum, présentations, webinars, dulm, conférences, dolor, pmiin, séminaires, direct, lnwm, vos, vidéo, titre, lorem</keywords>
+      <time>110502</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916052_383843.jpg</attachment>
+      <keywords>ipsum, lur, webinars, distance, messages, conférences, vos, modules, présentations, séminaires, direct, demande, vidée, unlm, elearning, dolor, vidéo, titre, lpmm, lorem, formation</keywords>
+      <time>111580</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916057_900985.jpg</attachment>
+      <keywords>analyser, vie, dune, gérer, publler, studio, mediaserver, editer, vidéo, diffuser, cycle, campus, complet</keywords>
+      <time>117090</time>
+      <title>Le cycle de vie ccmplet d’une vidéo</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916071_084187.jpg</attachment>
+      <keywords>übicast, toutenun, sur, intuitif, linux, 2015, studio, tactile, basé</keywords>
+      <time>130282</time>
+      <title>Le Studio</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916082_750768.jpg</attachment>
+      <keywords>comment, marche, 2015, übicast</keywords>
+      <time>141940</time>
+      <title>Comment ça marche ’?</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916093_385308.jpg</attachment>
+      <keywords>comment, marche, 2015, übicast</keywords>
+      <time>152573</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916096_385888.jpg</attachment>
+      <keywords>comment, marche, 2015, übicast</keywords>
+      <time>155578</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916099_386065.jpg</attachment>
+      <keywords>comment, marche, 2015, übicast</keywords>
+      <time>158580</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916101_502650.jpg</attachment>
+      <keywords>comment, übicast, pleine, capture, qualité, marche, 2015, data</keywords>
+      <time>160697</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916106_586664.jpg</attachment>
+      <keywords>comment, marche, pleine, ure, qualité, captl, übicast, 2015, audio, data</keywords>
+      <time>165775</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916108_669733.jpg</attachment>
+      <keywords>comment, marche, pleine, hdmi, capture, soi, qualité, ublcast, video, 2018, audio, data, sdi</keywords>
+      <time>167863</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916111_301866.jpg</attachment>
+      <keywords>comment, marche, automatisation, pleine, hdmi, übicast, qualité, capture, video, 2015, audio, data, sdi</keywords>
+      <time>170491</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916117_452382.jpg</attachment>
+      <keywords>par, übdcast, support, analyse, 20i8, slide, ariaav, indexation, navigation</keywords>
+      <time>176642</time>
+      <title>Analyse du support</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916126_454654.jpg</attachment>
+      <keywords>par, aaav, title, introduction, cles, support, fvæwwmw, analyse, lomm, pour, extraction, slide, mots, ipum, moteur, dolor, indexation, ublcast, navigation, recherche, 2018</keywords>
+      <time>185645</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916134_769958.jpg</attachment>
+      <keywords>übicast, expérience, laudio, régularité, 2015, normalisation, audio, améliorée</keywords>
+      <time>193967</time>
+      <title>Normalisation audio</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916148_320084.jpg</attachment>
+      <keywords>2015, übicast, autcmatique, suivi</keywords>
+      <time>207508</time>
+      <title>Suivi autcmatique</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916164_820445.jpg</attachment>
+      <keywords>vuihucu, aaav, automatique, ubicastzoib, nganj, suivi</keywords>
+      <time>224015</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916166_670726.jpg</attachment>
+      <keywords>une, economique, 85mm, 2018, aaav, ontrf, seule, automatique, übocast, hfh, nécessite, waüeiir, nrqmanagfrgo, caméra, corrigible, fluide, suivi</keywords>
+      <time>225868</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916171_220860.jpg</attachment>
+      <keywords>2015, übicast, production, dynamique</keywords>
+      <time>230410</time>
+      <title>Production dynamique</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916177_988363.jpg</attachment>
+      <keywords>übicast, plein, écran, nouvelle, pour, diapositive, slide, production, sec, dynamique, 2015</keywords>
+      <time>237184</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916181_054453.jpg</attachment>
+      <keywords>übicast, plein, écran, aaav, nouvelle, pour, diapositive, slide, production, sec, dynamique, animée, 2015, support</keywords>
+      <time>240250</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916188_938336.jpg</attachment>
+      <keywords>übicast, plein, écran, aaav, nouvelle, pour, diapositive, slide, production, sec, présentateur, dynamique, animée, 2015, pendant, minutes, support, même</keywords>
+      <time>248138</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916199_405141.jpg</attachment>
+      <keywords>videodata, übicast, par, clip, écran, aaav, introfin, fond, ratios, etc, personnalisation, profils, formats, 2015, logo, postproduction</keywords>
+      <time>258598</time>
+      <title>Personnalisaticn</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916223_072280.jpg</attachment>
+      <keywords>2015, übicast, 0011, 10050</keywords>
+      <time>282263</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916228_672892.jpg</attachment>
+      <keywords>00100100250, ûno, hlllül, 2015, übicast</keywords>
+      <time>287866</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916232_473933.jpg</attachment>
+      <keywords>übicast, wubicasl, deeo, 2015, 6050, quo</keywords>
+      <tag>video_begin</tag>
+      <time>291665</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916239_139638.jpg</attachment>
+      <keywords>2015, ûno, ubicast, 00100050, übicast</keywords>
+      <time>298332</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916287_075765.jpg</attachment>
+      <keywords>übicast, podcast, paquet, usa, ftp, media, aaav, upload, direct, tierces, plateformes, rich, 2015, ïtuhef, scorm</keywords>
+      <tag>video_end</tag>
+      <time>340252</time>
+      <title>Partager ses contenus</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916291_825759.jpg</attachment>
+      <keywords>2015, übicast, prcpos, mediaserver</keywords>
+      <time>351016</time>
+      <title>MediaServer</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916292_392055.jpg</attachment>
+      <keywords>übicast, podcast, paquet, usa, ftp, media, aaav, upload, direct, tierces, plateformes, rich, 2015, ïtuhef, scorm</keywords>
+      <time>351583</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916302_511309.jpg</attachment>
+      <keywords>2015, übicast, prcpos, mediaserver</keywords>
+      <time>361701</time>
+      <title>MediaServer</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916309_375310.jpg</attachment>
+      <keywords>tous, portail, ublcast, stockage, 2018, mediaserver, appareils</keywords>
+      <time>365842</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916354_076979.jpg</attachment>
+      <keywords>prcpos, tous, streaming, stockage, 2018, mediaserver, ublcast, appareils, portall</keywords>
+      <time>374355</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916357_143752.jpg</attachment>
+      <keywords>übicast, aaav, votre, stockage, lms, site, streaming, tous, web, mediaserver, 2015, intranet, appareils, portall, propos</keywords>
+      <time>377419</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916362_227261.jpg</attachment>
+      <keywords>auteurs, clés, easyùst, global, aperçu, mots, solutions, medna, restitution, spemde, chaînes, snea, media, ummmau, portail, ugunme, ubicast, communic, rich, iiiiqiibii, vuui, titres, ronulgnm, fonctionnalités, cha, fomadonuœmmunk, ubocastzoi, vidéos, juiüüuii, formation, moteur, specuciee, recherche, easyù, dans, pour, etc, resmuuon, les, gamme, rach</keywords>
+      <time>382496</time>
+      <title>Fonctionnalités du portail</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916367_227556.jpg</attachment>
+      <keywords>auteurs, clés, aaav, global, mots, évènements, chaînes, par, portail, contenu, live, 2015, titres, fonctionnalités, webtv, übocast, structuré, les, moteur, recherche, dans, etc, organisé</keywords>
+      <time>387497</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916373_894562.jpg</attachment>
+      <keywords>übicast, auteurs, clés, évènements, cûwùiwi, ajout, global, nandou, cona, mots, vidéo, pièce, téléversez, chaînes, womhbw, res, live, portail, toute, contenu, add, jointe, 2015, cnm, image, titres, fonctionnalités, webtv, mmoooonmwumlmm, par, structuré, les, moteur, contenus, wmmœlmlmebumlbi, recherche, mmww, uth, dans, etc, une, organisé, hùü, glumwwüuüû</keywords>
+      <time>394175</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916380_662377.jpg</attachment>
+      <keywords>übicast, auteurs, clés, évènements, ajout, global, feuilles, mots, couleurs, personalisation, logo, pièce, téléversez, chaînes, style, portail, toute, contenu, live, 2015, totale, jointe, image, css, titres, fonctionnalités, webtv, par, structuré, les, moteur, contenus, vannuqur, vidéo, æhm, recherche, entête, dans, etc, organisé, bal</keywords>
+      <time>400943</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916390_695355.jpg</attachment>
+      <keywords>pièces, auteurs, clés, évènements, ajout, global, feuilles, mots, descriptions, couleurs, contenus, personalisation, logo, téléversez, chaînes, style, vidéos, tchat, portail, contenu, live, widgets, totale, css, titres, fonctionnalités, webtv, images, par, 2015, structuré, les, moteur, commentaires, übicast, recherche, vos, entête, tiers, dans, liens, etc, organisé, bal, jointes, lnteractivité</keywords>
+      <time>410967</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916405_846953.jpg</attachment>
+      <keywords>cas, auteurs, clés, évènements, ajout, global, feuilles, mots, descriptions, couleurs, contenus, personalisation, logo, téléversez, chaînes, style, vidéos, support, tchat, authentication, portail, contenu, live, pièces, 2018, ldap, widgets, totale, ubocast, css, titres, fonctionnalités, webtv, images, tiers, structuré, les, moteur, commentaires, aaav, recherche, vos, entête, dans, liens, par, détaillées, etc, organisé, lti, jointes, statistiques, lnteractivité</keywords>
+      <time>426127</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916415_512967.jpg</attachment>
+      <keywords>imam, cwaw, cambridge, unit000, telecom, waœick, giaui, letmh, universitat, 1nn, total, unwersnt, iiliiikdqiyiy, aflrv, gruau, paris, ëouœ, iuüpiitiq, cevgypa, universite, nyseeumnext, umwrgiie, iaäihaii, mucus, hgm, ubicast, viiilijiil, ufïiversité, oolm, 2015, clientsv, banque, îiiniviidcitvoi, agricole, 200, heureux, far, umversrté, pql, elsti, lillli1, lucqdic, monde, univikhiv, universiïe, lnlj, convulomanolüo, postal, universitätbonnl, fini, ucdsutheriond, alcatel, üiü, thales, clients, dans, nüïrhvïïü, mmamä, plus, pwsarsamë, eisti, auòl, ùll, marseille, aia, cerqyiontom, wao</keywords>
+      <time>435794</time>
+      <title>clients heureux</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916425_829467.jpg</attachment>
+      <keywords>2015, übicast, entreprise</keywords>
+      <time>446101</time>
+      <title>En entreprise</title>
+    </index>
+    <index>
+      <attachment>images/capture_1442916430_663444.jpg</attachment>
+      <keywords>webcast, übicast, conférences, entreprise, 2015</keywords>
+      <time>450936</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916433_830162.jpg</attachment>
+      <keywords>entreprise</keywords>
+      <time>454102</time>
+    </index>
+    <index>
+      <attachment>images/capture_1442916437_585572.jpg</attachment>
+      <keywords>distance, vidéos, huuwuùhfm, messages, poriaîl, formation, entreprise, elearning, vidéo</keywords>
+      <time>457861</time>
+    </index>
+  </indexes>
+  <resources>
+    <resource service="amazon">ubicast-solution-corporate_1e4e</resource>
+  </resources>
+</metacast>
