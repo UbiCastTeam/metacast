@@ -1187,7 +1187,9 @@
     ],
     "language": "fr",
     "location": "easycast-a29",
-    "markers": "transcoding:mediaserver",
+    "markers": [
+        "transcoding:mediaserver"
+    ],
     "owner": "common",
     "resources": [
         {

@@ -334,9 +334,9 @@ def load_json(content):
                 transcoding_service = tr_val
         if transcoding_service:
             if data.get('markers'):
-                data['markers'] += f',transcoding:{transcoding_service}'
+                data['markers'].append(f'transcoding:{transcoding_service}')
             else:
-                data['markers'] = f'transcoding:{transcoding_service}'
+                data['markers'] = [f'transcoding:{transcoding_service}']
 
     # Load from json
     mc = MetaCast.from_json(data)
